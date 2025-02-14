@@ -118,7 +118,7 @@ const TrafficAnalysis = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/routing/calculate-route",
+        (import.meta.env.VITE_BACKEND_URL+"/routing/calculate-route"),
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -1,11 +1,21 @@
 import React from "react";
-import { Navbar, Container, Nav, NavDropdown, Button, Form } from "react-bootstrap";
+import {
+  Navbar,
+  Container,
+  Nav,
+  NavDropdown,
+  Button,
+  Form,
+} from "react-bootstrap";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="w-full mx-auto relative z-50" style={{backgroundColor:"#0a192f"}}>
+    <div
+      className="w-full mx-auto relative z-50"
+      style={{ backgroundColor: "#0a192f" }}
+    >
       <Navbar
         expand="lg"
         className="backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_rgba(255,255,255,0.3)] rounded-3xl hover:shadow-[0_15px_45px_rgba(255,255,255,0.5)] transition-all duration-300"
@@ -26,14 +36,15 @@ function Header() {
 
           <Navbar.Toggle
             aria-controls="navbarScroll"
-            className="border-white text-white"
+            className="border-white"
+            style={{ filter: "invert(1)" }}
           />
 
           <Navbar.Collapse
             id="navbarScroll"
             className="py-4 lg:py-0 text-white "
           >
-            <Nav className="me-auto my-2 my-lg-0 gap-3" navbarScroll>
+            <Nav className="me-auto my-2 my-lg-0 gap-3 text-white" navbarScroll>
               <motion.div whileHover={{ scale: 1.05 }}>
                 <Nav.Link
                   as={Link}
@@ -54,7 +65,10 @@ function Header() {
                 </Nav.Link>
               </motion.div>
 
-              <motion.div whileHover={{ }} style={{backgroundColor:"#0a192f"}}>
+              <motion.div
+                whileHover={{}}
+                style={{ backgroundColor: "#0a192f" }}
+              >
                 <NavDropdown
                   title={
                     <span className="text-white font-medium transition-all">
@@ -63,13 +77,12 @@ function Header() {
                   }
                   className="rounded-xl px-4 py-2 text-white"
                   id="navbarScrollingDropdown"
-                  
                 >
                   <div className="bg-slate-900/95 backdrop-blur-3xl border border-white/20 rounded-xl p-2 shadow-xl">
                     <NavDropdown.Item
                       as={Link}
                       to="/traffic-analysis"
-                      className="text-white hover:bg-white/10 hover:text-cyan-300 rounded-lg p-3 transition-all group"
+                      className="text-black rounded-lg p-3 transition-all group"
                     >
                       <span className="group-hover:translate-x-2 transition-transform">
                         🚦 Traffic Analysis
@@ -78,7 +91,7 @@ function Header() {
                     <NavDropdown.Item
                       as={Link}
                       to="/ai-predictions"
-                      className="text-white hover:bg-white/10 hover:text-pink-300 rounded-lg p-3 transition-all group"
+                      className="text-black  hover:text-pink-300 rounded-lg p-3 transition-all group"
                     >
                       <span className="group-hover:translate-x-2 transition-transform">
                         🤖 AI Predictions
@@ -87,10 +100,19 @@ function Header() {
                     <NavDropdown.Item
                       as={Link}
                       to="/carpooling"
-                      className="text-white hover:bg-white/10 hover:text-pink-300 rounded-lg p-3 transition-all group"
+                      className="text-blacck hover:text-pink-300 rounded-lg p-3 transition-all group"
                     >
                       <span className="group-hover:translate-x-2 transition-transform">
-                      🗺️ Car Pooling
+                        🗺️ Car Pooling
+                      </span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Link}
+                      to="/navigate-me"
+                      className="text-black  hover:text-cyan-300 rounded-lg p-3 transition-all group"
+                    >
+                      <span className="group-hover:translate-x-2 transition-transform">
+                        🧭 Navigate Me
                       </span>
                     </NavDropdown.Item>
                   </div>

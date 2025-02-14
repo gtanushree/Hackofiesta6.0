@@ -105,3 +105,30 @@
       opacity: 0.8;
     }
   }
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust as needed */
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: transparent; /* Light gray */
+  border-radius: 10px;
+}
+
+/* Handle (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #2d4aaa; /* Dark gray */
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2d4aaa; /* Darker shade */
+}
+/* This applies to Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #3e5a48 #0a192f;
+}

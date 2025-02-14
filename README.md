@@ -144,12 +144,12 @@ frontend/
 1. Navigate to the frontend directory:
    ```bash
     cd frontend
-    npm install
+    npm install --legacy-peer-deps
     npm run dev
     ```
 2. Navigate to the backend directory:
     ```bash
     cd backend
-    npm install
+    npm install --legacy-peer-deps
     npm start
     ```
