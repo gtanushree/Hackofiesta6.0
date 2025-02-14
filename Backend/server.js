@@ -3,6 +3,7 @@ const cors = require('cors');
 const { spawn } = require('child_process');
 const trafficRoutes = require('./routes/traffic');
 const routingRoutes = require('./routes/routing');
+const Ai = require('./routes/ai');
 const { logRequest, logError } = require('./utils/logger'); // Custom logger utility
 const rateLimit = require('express-rate-limit'); // Rate limiting for API protection
 
@@ -25,6 +26,7 @@ app.use(limiter); // Apply rate limiting to all routes
 // Routes
 app.use('/traffic', trafficRoutes); // Traffic-related routes
 app.use('/routing', routingRoutes); // Routing-related routes
+app.use('/ai' , Ai); // AI-related routes
 
 // Health check endpoint
 app.get('/health', (req, res) => {

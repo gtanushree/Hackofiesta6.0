@@ -5,6 +5,13 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Sphere, Text } from "@react-three/drei";
 import { motion } from "framer-motion";
 import "animate.css/animate.min.css";
+const colors = {
+  darkBlue: "#0a192f",
+  accentGreen: "#64ffda",
+  accentRed: "#f07178",
+  lightText: "#ccd6f6",
+  secondaryBg: "#112240",
+};
 
 function FloatingTrafficElements() {
   return (
@@ -41,7 +48,9 @@ function FloatingTrafficElements() {
 function Home() {
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/mainpage");
+      const response = await axios.post(
+        import.meta.env.backendUrl + "/mainpage"
+      );
       console.log("Server Response:", response.data);
     } catch (error) {
       console.error("Error posting data:", error);
@@ -50,11 +59,24 @@ function Home() {
 
   return (
     <div style={{ backgroundColor: "#0a192f" }}>
-      <div style={{position:"absolute",zIndex:"0",height:"100%",width:"100%"}}>
+      <div
+        style={{
+          position: "absolute",
+          zIndex: "0",
+          height: "100%",
+          width: "100%",
+        }}
+      >
         <FloatingTrafficElements />
       </div>
-      <Container className="flex justify-center items-center h-screen relative overflow-hidden w-screen z-10">
-        <div className="w-full w-screen space-y-8 relative z-1" style={{marginTop:"10vh"}}>
+      <Container
+        className="flex justify-center items-center h-screen relative overflow-hidden w-screen z-10"
+        style={{ backgroundColor: colors.darkBlue }}
+      >
+        <div
+          className="w-full w-screen space-y-8 relative z-1"
+          style={{ marginTop: "10vh" }}
+        >
           {/* Main Holographic Interface */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -63,9 +85,10 @@ function Home() {
             className="perspective-2000"
           >
             <Card
-              className="bg-black/60 backdrop-blur-2xl border-2 border-cyan-400/30 rounded-3xl p-8 
-          shadow-[0_0_80px_rgba(0,255,255,0.3)] hover:shadow-[0_0_120px_rgba(255,0,255,0.5)]
+              className="bg-[rgba(17,34,64,0.6)] backdrop-blur-xl border-2 border-[rgba(204,214,246,0.3)] rounded-3xl p-8 
+          shadow-[0_0_80px_rgba(100,255,218,0.3)] hover:shadow-[0_0_120px_rgba(100,255,218,0.5)]
           transform-style-preserve-3d group relative overflow-hidden"
+              style={{ backgroundColor: "rgba(11, 13, 32, 0.93)", blur: "100px" }}
             >
               {/* Animated Grid Background */}
               <Card.Body className="relative">
@@ -74,13 +97,13 @@ function Home() {
                   className="text-center mb-8"
                 >
                   <h1
-                    className="text-7xl font-black mb-4 text-transparent bg-clip-text 
-                bg-gradient-to-r from-cyan-400 to-pink-400 animate-text-glow"
+                    className="text-7xl font-black mb-4 text-white bg-clip-text 
+                bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] animate-text-glow"
                   >
                     SMART TRAFFIC AI
                   </h1>
                   <div
-                    className="h-1 bg-gradient-to-r from-cyan-400 to-pink-400 w-1/3 mx-auto 
+                    className="h-1 bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] w-1/3 mx-auto 
                 animate__animated animate__fadeInLeft"
                   />
                 </motion.div>
@@ -90,14 +113,17 @@ function Home() {
                   {/* Features Panel */}
                   <motion.div
                     whileHover={{ rotateY: 5 }}
-                    className="bg-black/40 p-8 rounded-2xl border-2 border-cyan-400/20 
-                  hover:border-cyan-400/50 transition-all relative"
+                    className="bg-[rgba(17,34,64,0.4)] p-8 rounded-2xl border-2 border-[rgba(100,255,218,0.2)] 
+                  hover:border-[rgba(100,255,218,0.5)] transition-all relative"
                   >
                     <div
-                      className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-transparent 
+                      className="absolute inset-0 bg-gradient-to-r from-[rgba(100,255,218,0.1)] to-transparent 
                   opacity-30 animate-pulse"
                     />
-                    <h2 className="text-3xl font-bold mb-6 text-cyan-400">
+                    <h2
+                      className="text-3xl font-bold mb-6"
+                      style={{ color: colors.accentGreen }}
+                    >
                       Features
                     </h2>
                     <ul className="space-y-4">
@@ -111,13 +137,13 @@ function Home() {
                           key={i}
                           whileHover={{ x: 15 }}
                           className="flex items-center space-x-4 text-lg p-4 
-                        bg-black/30 rounded-xl hover:bg-cyan-400/10 border border-cyan-400/10
-                        transition-all"
+                        bg-[rgba(17,34,64,0.3)] rounded-xl hover:bg-[rgba(100,255,218,0.1)] border border-[rgba(100,255,218,0.1)]
+                        transition-all text-white"
                         >
-                          <span className="text-3xl animate-bounce">
+                          <span className="text-3xl animate-bounce text-white">
                             {item.split(" ")[0]}
                           </span>
-                          <span className="text-xl">
+                          <span className="text-xl text-white">
                             {item.split(" ").slice(1).join(" ")}
                           </span>
                         </motion.li>
@@ -128,17 +154,20 @@ function Home() {
                   {/* Use Cases Panel */}
                   <motion.div
                     whileHover={{ rotateY: -5 }}
-                    className="bg-black/40 p-8 rounded-2xl border-2 border-pink-400/20 
-                  hover:border-pink-400/50 transition-all relative"
+                    className="bg-[rgba(17,34,64,0.4)] p-8 rounded-2xl border-2 border-[rgba(240,113,120,0.2)] 
+                  hover:border-[rgba(240,113,120,0.5)] transition-all relative text-white"
                   >
                     <div
-                      className="absolute inset-0 bg-gradient-to-l from-pink-400/10 to-transparent 
+                      className="absolute inset-0 bg-gradient-to-l from-[rgba(240,113,120,0.1)] to-transparent 
                   opacity-30 animate-pulse"
                     />
-                    <h2 className="text-3xl font-bold mb-6 text-pink-400">
+                    <h2
+                      className="text-3xl font-bold mb-6 "
+                      style={{ color: colors.accentRed }}
+                    >
                       Use Cases
                     </h2>
-                    <ul className="space-y-4">
+                    <ul className="space-y-4 text-white">
                       {[
                         "City Control",
                         "Emergency Routes",
@@ -148,18 +177,19 @@ function Home() {
                         <motion.li
                           key={i}
                           whileHover={{ scale: 1.02 }}
-                          className="p-4 bg-black/30 rounded-xl hover:bg-pink-400/10 
-                        border border-pink-400/10 transition-all"
+                          className="p-4 bg-[rgba(17,34,64,0.3)] rounded-xl hover:bg-[rgba(240,113,120,0.1)] 
+                        border border-[rgba(240,113,120,0.1)] transition-all text-white"
                         >
-                          <div className="flex items-center space-x-4">
+                          <div className="flex items-center space-x-4 text-white">
                             <div
                               className="w-12 h-12 flex items-center justify-center 
-                          bg-gradient-to-r from-pink-400 to-cyan-400 rounded-full text-xl
+                          bg-gradient-to-r from-[rgb(240,113,120)] to-[rgb(100,255,218)] rounded-full text-xl
+                          text-white
                           animate-pulse"
                             >
                               {i + 1}
                             </div>
-                            <span className="text-xl">{item}</span>
+                            <span className="text-xl text-white">{item}</span>
                           </div>
                         </motion.li>
                       ))}
@@ -174,10 +204,10 @@ function Home() {
                   className="mt-12 flex justify-center"
                 >
                   <Button
-                    className="py-5 px-20 bg-gradient-to-r from-[#64ffda] to-[#f07178] 
-             rounded-full text-2xl font-bold shadow-[0_4px_12px_rgba(100,255,218,0.5)] 
-             hover:shadow-[0_8px_20px_rgba(100,255,218,0.8)] transition-all duration-300 
-             border-2 border-white/40 relative overflow-hidden group"
+                    className="py-5 px-20 bg-gradient-to-r from-[#64ffda] to-[#f07178] backdrop-blur-md
+      rounded-full text-2xl font-bold shadow-[0_4px_12px_rgba(100,255,218,0.5)]
+      hover:shadow-[0_8px_20px_rgba(100,255,218,0.8)] transition-all duration-300
+      border-2 border-[#ccd6f6]/40 relative overflow-hidden group"
                     onClick={handleSubmit}
                   >
                     {/* Button Text */}
@@ -186,7 +216,7 @@ function Home() {
                     </span>
 
                     {/* Background Glow Effect */}
-                    <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                    <div className="absolute inset-0 bg-white/20 backdrop-blur-sm animate-pulse" />
 
                     {/* Border Glow Effect */}
                     <div className="absolute inset-0 border-2 border-white/20 rounded-full animate-border-glow" />
@@ -197,23 +227,20 @@ function Home() {
           </motion.div>
 
           {/* Holographic Road Visualization */}
-          <div className="h-32 relative overflow-hidden rounded-2xl bg-black/40 backdrop-blur-lg border-2 border-cyan-400/20">
+          <div className="h-32 relative overflow-hidden rounded-2xl bg-[rgba(17,34,64,0.4)] backdrop-blur-lg border-2 border-[rgba(100,255,218,0.2)]">
             <div className="absolute inset-0 flex items-center animate-holo-road">
               {[...Array(20)].map((_, i) => (
                 <div
                   key={i}
-                  className="h-2 w-32 bg-gradient-to-r from-cyan-400 to-pink-400 mx-8 
-              rounded-full transform -skew-x-12 shadow-xl"
+                  className="h-2 w-32 bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] mx-8 
+                  rounded-full transform -skew-x-12 shadow-xl"
                 />
               ))}
             </div>
-            <div
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 
-          animate-holo-car"
-            >
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 animate-holo-car">
               <div
-                className="w-full h-full bg-gradient-to-r from-cyan-400 to-pink-400 
-            rounded-lg transform -skew-x-12 shadow-2xl blur-[1px]"
+                className="w-full h-full bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] 
+                  rounded-lg transform -skew-x-12 shadow-2xl blur-[1px]"
               />
             </div>
           </div>

@@ -7,6 +7,7 @@ import Dashboard from './Components/Dashboard';
 import TrafficAnalysis from './Components/TrafficAnalysis';
 import CarPooling from './Components/CarPooling';
 import AiPredictions from './Components/AiPredictions';
+import NavigateMe from './Components/NavigateMe';
 import NotFound from './Components/NotFound'; // Handle 404 pages
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/carpooling" element={<CarPooling />} />
         <Route path="/ai-predictions" element={<AiPredictions />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/navigate-me" element={<NavigateMe />} />
       </Routes>
     </Router>
   );
