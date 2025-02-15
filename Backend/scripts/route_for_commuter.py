@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[10]:
-
-
 import pandas as pd
 import random
 import networkx as nx
 from sklearn.ensemble import RandomForestRegressor 
 from sklearn.preprocessing import LabelEncoder
 import joblib
+import sys
+import json  # ✅ Added to format output correctly
 
 def generate_fake_metro_data():
     stations = [
@@ -40,11 +39,8 @@ def generate_fake_metro_data():
     df.to_csv("delhi_metro_commute_data.csv", index=False)
     
     joblib.dump(graph, "metro_graph.pkl")
-    print("✅ Fake dataset updated: delhi_metro_commute_data.csv")
+    # print("✅ Fake dataset updated: delhi_metro_commute_data.csv")
     return df 
-
-
-# In[15]:
 
 
 def train_model():
@@ -59,18 +55,14 @@ def train_model():
     df["cost_weighted"] = df["total_fare"] + 0.5 * df["total_time_min"] + 0.3 * df["traffic"]
 
     X = df[["origin", "destination", "distance_km", "total_time_min", "total_fare", "traffic", "congestion"]]
-    y = df["cost_weighted"]  # Regression target (continuous values)
+    y = df["cost_weighted"]  
 
-    # Use RandomForestRegressor instead of Classifier
     model = RandomForestRegressor(n_estimators=200, random_state=42)
     model.fit(X, y)
 
     joblib.dump(model, "route_recommender_model.pkl")
     joblib.dump(label_encoder, "label_encoder.pkl")
-    print("✅ Model trained successfully (Regression Mode)!")
-
-
-# In[16]:
+    # print("✅ Model trained successfully (Regression Mode)!")
 
 
 def find_shortest_path(origin, destination):
@@ -82,17 +74,18 @@ def find_shortest_path(origin, destination):
         return None
 
 
-# In[17]:
-
-
 def predict_route(origin, destination):
     df = pd.read_csv("delhi_metro_commute_data.csv")
     label_encoder = joblib.load("label_encoder.pkl")
     model = joblib.load("route_recommender_model.pkl")
     
+    # ✅ Ensure stations exist in dataset
+    if origin not in df["origin"].values or destination not in df["destination"].values:
+        return json.dumps({"error": "Invalid station name provided."})
+
     path = find_shortest_path(origin, destination)
     if not path:
-        return "No available route."
+        return json.dumps({"error": "No available route."})
     
     total_distance = 0
     total_time = 0
@@ -127,33 +120,26 @@ def predict_route(origin, destination):
             
             previous_mode = predicted_mode
     
-    return {
+    return json.dumps({
         "Route": path,
         "Total Distance": total_distance,
         "Total Time": total_time,
         "Total Fare": total_fare,
         "Transport Modes": transport_modes,
         "Mode Changes": mode_changes
-    }
-
-
-# In[18]:
+    })
 
 
 if __name__ == "__main__":
     df = generate_fake_metro_data()
     train_model()
     
-    origin = input("Enter Origin Station: ")
-    destination = input("Enter Destination Station: ")
+    if len(sys.argv) < 3:
+        print(json.dumps({"error": "Missing origin or destination"}))
+        sys.exit(1)
+
+    origin = sys.argv[1]
+    destination = sys.argv[2]
     
     result = predict_route(origin, destination)
-    print(result)
-    
-
-
-# In[ ]:
-
-
-
-
+    print(result)  # ✅ Now prints a JSON string

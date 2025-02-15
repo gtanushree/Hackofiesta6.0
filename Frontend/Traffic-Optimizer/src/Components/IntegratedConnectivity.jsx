@@ -3,49 +3,54 @@ import { Box, Typography, Button, Card, CardContent, TextField, CircularProgress
 import { motion } from "framer-motion";
 
 const IntegratedConnectivity = ({ theme }) => {
-  // Define color scheme for light and dark themes
-  const colors = {
-    dark: {
-      background: "#112240",
-      accentGreen: "#64ffda",
-      accentRed: "#f07178",
-      text: "#ccd6f6",
-      cardBackground: "rgba(255, 255, 255, 0.1)",
-      cardBorder: "rgba(100, 255, 218, 0.5)",
-    },
-    light: {
-      background: "#ffffff",
-      accentGreen: "#00bcd4",
-      accentRed: "#ff5252",
-      text: "#333333",
-      cardBackground: "rgba(0, 0, 0, 0.1)",
-      cardBorder: "rgba(0, 188, 212, 0.5)",
-    },
-  };
+// Color Scheme
+const colors = {
+  dark: {
+    background: "#0a192f",
+    accentGreen: "#64ffda",
+    accentRed: "#f07178",
+    text: "#fff",
+    cardBackground: "rgba(255, 255, 255, 0.1)",
+    cardBorder: "rgba(100, 255, 218, 0.5)",
+    heading: "#64ffda",
+  },
+  light: {
+    background: "#ffffff",
+    accentGreen: "#00bcd4",
+    accentRed: "#ff5252",
+    text: "#333333",
+    cardBackground: "rgba(0, 0, 0, 0.1)",
+    cardBorder: "rgba(0, 188, 212, 0.5)",
+    heading: "#00bcd4",
+  },
+};
 
-  // Get the current theme colors
   const currentColors = colors[theme];
 
-  // State for user input
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [route, setRoute] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [lastQuery, setLastQuery] = useState({ origin: "", destination: "" });
 
-  // Function to fetch route from backend
   const fetchRoute = async () => {
     if (!origin || !destination) {
       setError("Please enter both origin and destination.");
       return;
     }
 
+    if (lastQuery.origin === origin && lastQuery.destination === destination) {
+      return; // Prevent unnecessary re-fetch
+    }
+
     setLoading(true);
     setError("");
     setRoute(null);
+    setLastQuery({ origin, destination });
 
     try {
-      const response = await fetch(`http://localhost:3000/commuter/get-route?origin=${origin}&destination=${destination}`);
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/commuter/get-route?origin=${origin}&destination=${destination}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -103,7 +108,6 @@ const IntegratedConnectivity = ({ theme }) => {
             Our platform seamlessly connects various modes of transport—metro, bus, ride-sharing, bicycles, and walking—into one unified system. Plan your journey with integrated schedules, live updates, and shared rides to simplify your daily commute.
           </Typography>
 
-          {/* Origin and Destination Input */}
           <TextField
             label="Origin"
             variant="outlined"
@@ -141,13 +145,13 @@ const IntegratedConnectivity = ({ theme }) => {
         </CardContent>
       </Card>
 
-      {/* Display API Response */}
       {loading && <CircularProgress sx={{ color: currentColors.accentGreen, mt: 2 }} />}
       {error && (
         <Typography sx={{ color: currentColors.accentRed, mt: 2 }}>
           {error}
         </Typography>
       )}
+
       {route && (
         <Card
           sx={{
@@ -167,7 +171,22 @@ const IntegratedConnectivity = ({ theme }) => {
               Suggested Route:
             </Typography>
             <Typography variant="body1" sx={{ color: currentColors.text }}>
-              {route.route_description || "Route details not available."}
+              <strong style={{ color: currentColors.heading }}>Route:</strong> {route.Route.join(" → ")}
+            </Typography>
+            <Typography variant="body1" sx={{ color: currentColors.text }}>
+              <strong style={{ color: currentColors.heading }}>Transport Modes:</strong> {route["Transport Modes"].join(", ")}
+            </Typography>
+            <Typography variant="body1" sx={{ color: currentColors.text }}>
+              <strong style={{ color: currentColors.heading }}>Mode Changes:</strong> {route["Mode Changes"].length > 0 ? route["Mode Changes"].join(", ") : "No mode changes required"}
+            </Typography>
+            <Typography variant="body1" sx={{ color: currentColors.text }}>
+              <strong style={{ color: currentColors.heading }}>Total Distance:</strong> {route["Total Distance"].toFixed(2)} km
+            </Typography>
+            <Typography variant="body1" sx={{ color: currentColors.text }}>
+              <strong style={{ color: currentColors.heading }}>Total Fare:</strong> ₹{route["Total Fare"].toFixed(2)}
+            </Typography>
+            <Typography variant="body1" sx={{ color: currentColors.text }}>
+              <strong style={{ color: currentColors.heading }}>Total Time:</strong> {route["Total Time"].toFixed(2)} minutes
             </Typography>
           </CardContent>
         </Card>

@@ -75,7 +75,7 @@ function Home({ theme }) {
       accentGreen: "#00796b",
       accentRed: "#d32f2f",
       text: "#212121",
-      cardBackground: "#ffffff",
+      cardbackground: "#ffffff",
       cardBorder: "rgba(0, 121, 107, 0.5)",
       placeholderText: "#6c757d",
       buttonText: "#ffffff"
