@@ -1,5 +1,7 @@
-import React from "react";
-import { Typography, Box, Button } from "@mui/material";
+'use client';
+
+import React, { useState } from "react";
+import { Typography, Box, Button, TextField, CircularProgress } from "@mui/material";
 import { motion } from "framer-motion";
 
 const colors = {
@@ -44,6 +46,31 @@ const GlassmorphicCard = ({ children, theme }) => {
 
 const Carpooling = ({ theme }) => {
   const currentColors = colors[theme];
+  const [location, setLocation] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [rides, setRides] = useState([]);
+  const [error, setError] = useState(null);
+
+  const handleSearch = async () => {
+    setLoading(true);
+    setError(null);
+    setRides([]);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/carpooling/rides?location=${encodeURIComponent(location)}&organization=${encodeURIComponent(organization)}`
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setRides(data);
+      } else {
+        setError(data.error || "Failed to fetch rides");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    }
+    setLoading(false);
+  };
 
   return (
     <Box
@@ -56,53 +83,80 @@ const Carpooling = ({ theme }) => {
         alignItems: "center",
       }}
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Typography
-          variant="h3"
-          align="center"
-          sx={{
-            color: currentColors.accentGreen,
-            mb: 3,
-            fontWeight: "bold",
-          }}
-        >
+      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
+        <Typography variant="h3" align="center" sx={{ color: currentColors.accentGreen, mb: 3, fontWeight: "bold" }}>
           Carpooling
         </Typography>
       </motion.div>
 
       <GlassmorphicCard theme={theme}>
         <Typography variant="body1" sx={{ color: currentColors.text, mb: 2 }}>
-          Welcome to the Carpooling page. Here you can join or offer rides to reduce your carbon footprint and save on travel costs.
+          Find a carpool by entering your location and organization.
         </Typography>
-        <Typography variant="body1" sx={{ color: currentColors.text, mb: 2 }}>
-          Explore available carpool options, view schedules, and connect with drivers or fellow commuters.
-        </Typography>
+        <TextField
+          label="Location"
+          variant="outlined"
+          fullWidth
+          sx={{ mb: 2, backgroundColor: "white", borderRadius: "4px" }}
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <TextField
+          label="Organization"
+          variant="outlined"
+          fullWidth
+          sx={{ mb: 2, backgroundColor: "white", borderRadius: "4px" }}
+          value={organization}
+          onChange={(e) => setOrganization(e.target.value)}
+        />
 
-        <Box sx={{ mt: 4 }}>
-          <Button
-            variant="contained"
-            sx={{
-              background: `linear-gradient(90deg, ${currentColors.accentGreen}, ${currentColors.accentRed})`,
-              color: currentColors.background,
-              fontWeight: "bold",
-              paddingX: "2rem",
-              paddingY: "1rem",
-              borderRadius: "8px",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-              "&:hover": {
-                transform: "scale(1.05)",
-                transition: "transform 0.2s ease-in-out",
-              },
-            }}
-          >
-            Join a Carpool
-          </Button>
-        </Box>
+        <Button
+          variant="contained"
+          sx={{
+            background: `linear-gradient(90deg, ${currentColors.accentGreen}, ${currentColors.accentRed})`,
+            color: currentColors.background,
+            fontWeight: "bold",
+            paddingX: "2rem",
+            paddingY: "1rem",
+            borderRadius: "8px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+            "&:hover": {
+              transform: "scale(1.05)",
+              transition: "transform 0.2s ease-in-out",
+            },
+          }}
+          onClick={handleSearch}
+        >
+          {loading ? <CircularProgress size={24} sx={{ color: currentColors.background }} /> : "Find Rides"}
+        </Button>
       </GlassmorphicCard>
+
+      {error && (
+        <Typography variant="body2" sx={{ color: "red", mt: 2 }}>
+          {error}
+        </Typography>
+      )}
+
+      {rides.length > 0 && (
+        <GlassmorphicCard theme={theme}>
+          <Typography variant="h5" sx={{ color: currentColors.accentGreen, mb: 2 }}>
+            Available Rides
+          </Typography>
+          {rides.map((ride, index) => (
+            <Box key={index} sx={{ mb: 2, p: 2, borderRadius: "8px", backgroundColor: currentColors.cardBackground }}>
+              <Typography variant="body1" sx={{ color: currentColors.text }}>
+                <strong>Pickup:</strong> {ride.pickup_location}
+              </Typography>
+              <Typography variant="body1" sx={{ color: currentColors.text }}>
+                <strong>Destination:</strong> {ride.destination}
+              </Typography>
+              <Typography variant="body1" sx={{ color: currentColors.text }}>
+                <strong>Driver:</strong> {ride.driver}
+              </Typography>
+            </Box>
+          ))}
+        </GlassmorphicCard>
+      )}
     </Box>
   );
 };

@@ -8,6 +8,7 @@ const { logRequest, logError } = require('./utils/logger'); // Custom logger uti
 const rateLimit = require('express-rate-limit'); // Rate limiting for API protection
 const parkingRoutes = require('./routes/parking');
 const commuterRoutes = require('./routes/commuter');
+const carpoolingRoutes = require('./routes/carpooling');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -31,6 +32,7 @@ app.use('/routing', routingRoutes); // Routing-related routes
 app.use('/ai' , Ai); // AI-related routes
 app.use('/parking', parkingRoutes);
 app.use('/commuter', commuterRoutes);
+app.use('/carpooling', carpoolingRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
