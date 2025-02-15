@@ -9,7 +9,6 @@ const rateLimit = require('express-rate-limit'); // Rate limiting for API protec
 const parkingRoutes = require('./routes/parking');
 const commuterRoutes = require('./routes/commuter');
 
-
 const app = express();
 const port = process.env.PORT || 3000;
 

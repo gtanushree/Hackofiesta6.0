@@ -10,7 +10,7 @@ import {
 
 const SmartParking = ({ theme }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [parkingSlots, setParkingSlots] = useState([]); // ✅ Start as an empty array
+  const [parkingSlots, setParkingSlots] = useState([]); // ✅ Ensure it's an array
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -40,12 +40,13 @@ const SmartParking = ({ theme }) => {
   const handleSearch = async () => {
     setLoading(true);
     setError(null);
+    setParkingSlots([]); // ✅ Reset previous search results
 
     try {
       let queryParams = new URLSearchParams();
 
       if (searchQuery.trim()) {
-        // Determine if input is coordinates (lat,lon) or a location name
+        // ✅ Check if input is coordinates (lat,lon) or a location name
         const coords = searchQuery.split(",").map((val) => val.trim());
         if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
           queryParams.append("lat", parseFloat(coords[0]));
@@ -54,7 +55,7 @@ const SmartParking = ({ theme }) => {
           queryParams.append("location", searchQuery);
         }
       } else {
-        // Get user's current geolocation if searchQuery is empty
+        // ✅ Get user's current geolocation if searchQuery is empty
         const position = await new Promise((resolve, reject) => {
           navigator.geolocation.getCurrentPosition(resolve, reject);
         });
@@ -70,7 +71,13 @@ const SmartParking = ({ theme }) => {
       if (!response.ok) throw new Error("Failed to fetch parking slots.");
 
       const data = await response.json();
-      setParkingSlots(data.availableSlots || []);
+
+      // ✅ Fix incorrect response handling
+      if (Array.isArray(data)) {
+        setParkingSlots(data);
+      } else {
+        setError("No parking data available.");
+      }
     } catch (err) {
       setError(err.message || "Failed to fetch parking slots.");
     } finally {
@@ -166,7 +173,7 @@ const SmartParking = ({ theme }) => {
         ) : parkingSlots.length > 0 ? (
           parkingSlots.map((slot, index) => (
             <Card
-              key={slot.id || index} // ✅ Use slot.id if available, else fallback to index
+              key={slot.id || `${slot.name}-${index}`} // ✅ Use unique key
               sx={{
                 mb: 2,
                 backgroundColor: currentColors.cardBackground,
@@ -181,7 +188,22 @@ const SmartParking = ({ theme }) => {
                   {slot.name}
                 </Typography>
                 <Typography variant="body2" sx={{ color: currentColors.text }}>
-                  Location: {slot.lat}, {slot.lon}
+                  Location: {slot.area}
+                </Typography>
+                <Typography variant="body2" sx={{ color: currentColors.text }}>
+                  Available Slots: {slot.available_slots} / {slot.total_slots}
+                </Typography>
+                <Typography variant="body2" sx={{ color: currentColors.text }}>
+                  Hourly Rate: ₹{slot.hourly_rate}
+                </Typography>
+                <Typography variant="body2" sx={{ color: currentColors.text }}>
+                  Security: {slot.security ? "Yes" : "No"}
+                </Typography>
+                <Typography variant="body2" sx={{ color: currentColors.text }}>
+                  Valet Parking: {slot.valet_parking ? "Yes" : "No"}
+                </Typography>
+                <Typography variant="body2" sx={{ color: currentColors.text }}>
+                  EV Charging: {slot.ev_charging ? "Yes" : "No"}
                 </Typography>
               </CardContent>
             </Card>
