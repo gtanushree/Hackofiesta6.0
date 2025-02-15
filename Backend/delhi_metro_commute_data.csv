@@ -1,0 +1,507 @@
+origin,destination,distance_km,total_time_min,total_fare,traffic,congestion
+Kashmere Gate,Rajiv Chowk,9.6,14.9,21.3,0.94,0.62
+Rajiv Chowk,Kashmere Gate,9.6,14.9,21.3,0.94,0.62
+Kashmere Gate,Central Secretariat,18.4,28.8,40.5,0.62,0.55
+Central Secretariat,Kashmere Gate,18.4,28.8,40.5,0.62,0.55
+Kashmere Gate,Hauz Khas,7.2,13.9,9.9,0.42,0.14
+Hauz Khas,Kashmere Gate,7.2,13.9,9.9,0.42,0.14
+Kashmere Gate,Saket,9.3,14.1,12.5,0.75,0.22
+Saket,Kashmere Gate,9.3,14.1,12.5,0.75,0.22
+Kashmere Gate,Qutub Minar,21.6,36.9,42.9,0.16,0.79
+Qutub Minar,Kashmere Gate,21.6,36.9,42.9,0.16,0.79
+Kashmere Gate,Chhatarpur,17.8,31.9,37.2,0.04,0.26
+Chhatarpur,Kashmere Gate,17.8,31.9,37.2,0.04,0.26
+Kashmere Gate,AIIMS,7.6,14.3,19.0,0.79,0.32
+AIIMS,Kashmere Gate,7.6,14.3,19.0,0.79,0.32
+Kashmere Gate,Dhaula Kuan,2.6,4.2,5.9,0.87,0.94
+Dhaula Kuan,Kashmere Gate,2.6,4.2,5.9,0.87,0.94
+Kashmere Gate,Dwarka Sec 21,0.9,2.2,1.3,0.85,0.03
+Dwarka Sec 21,Kashmere Gate,0.9,2.2,1.3,0.85,0.03
+Kashmere Gate,Noida City Centre,18.1,40.1,42.5,0.66,0.44
+Noida City Centre,Kashmere Gate,18.1,40.1,42.5,0.66,0.44
+Kashmere Gate,Botanical Garden,15.9,32.2,36.0,0.32,0.71
+Botanical Garden,Kashmere Gate,15.9,32.2,36.0,0.32,0.71
+Kashmere Gate,Vaishali,15.1,35.7,29.0,0.44,0.29
+Vaishali,Kashmere Gate,15.1,35.7,29.0,0.44,0.29
+Kashmere Gate,Anand Vihar,1.5,3.1,3.3,0.99,0.61
+Anand Vihar,Kashmere Gate,1.5,3.1,3.3,0.99,0.61
+Kashmere Gate,Laxmi Nagar,15.6,38.8,30.6,0.12,0.74
+Laxmi Nagar,Kashmere Gate,15.6,38.8,30.6,0.12,0.74
+Kashmere Gate,Mayur Vihar,18.3,31.4,29.4,0.87,0.4
+Mayur Vihar,Kashmere Gate,18.3,31.4,29.4,0.87,0.4
+Kashmere Gate,Yamuna Bank,20.4,45.5,27.0,0.86,0.54
+Yamuna Bank,Kashmere Gate,20.4,45.5,27.0,0.86,0.54
+Kashmere Gate,New Ashok Nagar,9.0,18.0,21.4,0.71,0.85
+New Ashok Nagar,Kashmere Gate,9.0,18.0,21.4,0.71,0.85
+Kashmere Gate,Mandi House,17.3,30.6,27.3,0.08,0.82
+Mandi House,Kashmere Gate,17.3,30.6,27.3,0.08,0.82
+Kashmere Gate,Pragati Maidan,4.3,9.0,5.2,0.8,0.57
+Pragati Maidan,Kashmere Gate,4.3,9.0,5.2,0.8,0.57
+Kashmere Gate,Inderlok,2.3,3.6,5.2,0.5,0.63
+Inderlok,Kashmere Gate,2.3,3.6,5.2,0.5,0.63
+Kashmere Gate,Netaji Subhash Place,19.7,37.4,41.8,0.21,0.61
+Netaji Subhash Place,Kashmere Gate,19.7,37.4,41.8,0.21,0.61
+Kashmere Gate,Punjabi Bagh West,18.0,38.4,28.7,0.65,0.17
+Punjabi Bagh West,Kashmere Gate,18.0,38.4,28.7,0.65,0.17
+Rajiv Chowk,Central Secretariat,20.0,34.3,42.6,0.08,0.9
+Central Secretariat,Rajiv Chowk,20.0,34.3,42.6,0.08,0.9
+Rajiv Chowk,Hauz Khas,16.3,29.3,38.6,0.21,0.95
+Hauz Khas,Rajiv Chowk,16.3,29.3,38.6,0.21,0.95
+Rajiv Chowk,Saket,6.4,15.5,7.8,0.54,0.51
+Saket,Rajiv Chowk,6.4,15.5,7.8,0.54,0.51
+Rajiv Chowk,Qutub Minar,9.9,23.3,22.6,0.91,0.99
+Qutub Minar,Rajiv Chowk,9.9,23.3,22.6,0.91,0.99
+Rajiv Chowk,Chhatarpur,20.9,43.9,33.2,0.35,0.61
+Chhatarpur,Rajiv Chowk,20.9,43.9,33.2,0.35,0.61
+Rajiv Chowk,AIIMS,19.2,44.8,27.6,0.27,0.75
+AIIMS,Rajiv Chowk,19.2,44.8,27.6,0.27,0.75
+Rajiv Chowk,Dhaula Kuan,21.9,50.6,42.0,0.52,0.88
+Dhaula Kuan,Rajiv Chowk,21.9,50.6,42.0,0.52,0.88
+Rajiv Chowk,Dwarka Sec 21,4.6,8.6,7.1,0.82,0.1
+Dwarka Sec 21,Rajiv Chowk,4.6,8.6,7.1,0.82,0.1
+Rajiv Chowk,Noida City Centre,0.6,1.0,1.1,0.76,0.13
+Noida City Centre,Rajiv Chowk,0.6,1.0,1.1,0.76,0.13
+Rajiv Chowk,Botanical Garden,22.7,55.4,45.6,0.63,0.18
+Botanical Garden,Rajiv Chowk,22.7,55.4,45.6,0.63,0.18
+Rajiv Chowk,Vaishali,22.6,51.7,40.6,0.77,0.66
+Vaishali,Rajiv Chowk,22.6,51.7,40.6,0.77,0.66
+Rajiv Chowk,Anand Vihar,0.7,1.3,1.7,0.23,0.95
+Anand Vihar,Rajiv Chowk,0.7,1.3,1.7,0.23,0.95
+Rajiv Chowk,Laxmi Nagar,24.7,42.6,55.8,0.14,0.26
+Laxmi Nagar,Rajiv Chowk,24.7,42.6,55.8,0.14,0.26
+Rajiv Chowk,Mayur Vihar,8.9,14.6,15.4,0.5,0.57
+Mayur Vihar,Rajiv Chowk,8.9,14.6,15.4,0.5,0.57
+Rajiv Chowk,Yamuna Bank,6.0,11.6,7.7,0.89,0.97
+Yamuna Bank,Rajiv Chowk,6.0,11.6,7.7,0.89,0.97
+Rajiv Chowk,New Ashok Nagar,2.7,5.8,5.5,0.42,0.58
+New Ashok Nagar,Rajiv Chowk,2.7,5.8,5.5,0.42,0.58
+Rajiv Chowk,Mandi House,15.0,30.6,35.4,0.44,0.96
+Mandi House,Rajiv Chowk,15.0,30.6,35.4,0.44,0.96
+Rajiv Chowk,Pragati Maidan,8.5,20.6,11.1,0.17,0.09
+Pragati Maidan,Rajiv Chowk,8.5,20.6,11.1,0.17,0.09
+Rajiv Chowk,Inderlok,21.6,44.2,42.8,1.0,0.26
+Inderlok,Rajiv Chowk,21.6,44.2,42.8,1.0,0.26
+Rajiv Chowk,Netaji Subhash Place,5.4,13.0,7.9,0.36,0.91
+Netaji Subhash Place,Rajiv Chowk,5.4,13.0,7.9,0.36,0.91
+Rajiv Chowk,Punjabi Bagh West,11.6,27.6,16.2,0.35,0.52
+Punjabi Bagh West,Rajiv Chowk,11.6,27.6,16.2,0.35,0.52
+Central Secretariat,Hauz Khas,23.4,37.9,29.3,0.42,0.08
+Hauz Khas,Central Secretariat,23.4,37.9,29.3,0.42,0.08
+Central Secretariat,Saket,20.7,46.8,40.1,0.22,0.8
+Saket,Central Secretariat,20.7,46.8,40.1,0.22,0.8
+Central Secretariat,Qutub Minar,21.0,43.6,29.6,0.99,0.57
+Qutub Minar,Central Secretariat,21.0,43.6,29.6,0.99,0.57
+Central Secretariat,Chhatarpur,12.6,26.3,23.6,0.32,0.24
+Chhatarpur,Central Secretariat,12.6,26.3,23.6,0.32,0.24
+Central Secretariat,AIIMS,11.8,18.7,20.1,0.75,0.83
+AIIMS,Central Secretariat,11.8,18.7,20.1,0.75,0.83
+Central Secretariat,Dhaula Kuan,20.4,48.7,43.6,0.85,0.9
+Dhaula Kuan,Central Secretariat,20.4,48.7,43.6,0.85,0.9
+Central Secretariat,Dwarka Sec 21,17.3,30.9,24.6,0.6,0.71
+Dwarka Sec 21,Central Secretariat,17.3,30.9,24.6,0.6,0.71
+Central Secretariat,Noida City Centre,7.3,14.4,15.2,0.47,0.89
+Noida City Centre,Central Secretariat,7.3,14.4,15.2,0.47,0.89
+Central Secretariat,Botanical Garden,21.9,41.0,44.4,0.46,0.78
+Botanical Garden,Central Secretariat,21.9,41.0,44.4,0.46,0.78
+Central Secretariat,Vaishali,0.9,2.1,1.2,0.45,0.22
+Vaishali,Central Secretariat,0.9,2.1,1.2,0.45,0.22
+Central Secretariat,Anand Vihar,12.6,24.9,26.0,0.73,0.71
+Anand Vihar,Central Secretariat,12.6,24.9,26.0,0.73,0.71
+Central Secretariat,Laxmi Nagar,3.6,7.7,8.5,0.91,0.36
+Laxmi Nagar,Central Secretariat,3.6,7.7,8.5,0.91,0.36
+Central Secretariat,Mayur Vihar,9.4,18.5,15.7,0.83,0.46
+Mayur Vihar,Central Secretariat,9.4,18.5,15.7,0.83,0.46
+Central Secretariat,Yamuna Bank,12.4,26.3,18.9,0.42,0.51
+Yamuna Bank,Central Secretariat,12.4,26.3,18.9,0.42,0.51
+Central Secretariat,New Ashok Nagar,1.2,2.1,2.6,0.75,0.46
+New Ashok Nagar,Central Secretariat,1.2,2.1,2.6,0.75,0.46
+Central Secretariat,Mandi House,10.0,19.8,16.7,1.0,0.91
+Mandi House,Central Secretariat,10.0,19.8,16.7,1.0,0.91
+Central Secretariat,Pragati Maidan,22.4,40.8,27.2,0.75,0.8
+Pragati Maidan,Central Secretariat,22.4,40.8,27.2,0.75,0.8
+Central Secretariat,Inderlok,23.7,47.2,45.5,0.37,0.71
+Inderlok,Central Secretariat,23.7,47.2,45.5,0.37,0.71
+Central Secretariat,Netaji Subhash Place,2.2,4.9,2.8,0.15,0.89
+Netaji Subhash Place,Central Secretariat,2.2,4.9,2.8,0.15,0.89
+Central Secretariat,Punjabi Bagh West,0.9,2.1,2.1,0.57,0.64
+Punjabi Bagh West,Central Secretariat,0.9,2.1,2.1,0.57,0.64
+Hauz Khas,Saket,0.8,1.7,1.5,0.64,0.97
+Saket,Hauz Khas,0.8,1.7,1.5,0.64,0.97
+Hauz Khas,Qutub Minar,0.9,1.4,1.1,0.82,0.45
+Qutub Minar,Hauz Khas,0.9,1.4,1.1,0.82,0.45
+Hauz Khas,Chhatarpur,20.2,37.5,25.7,0.85,0.59
+Chhatarpur,Hauz Khas,20.2,37.5,25.7,0.85,0.59
+Hauz Khas,AIIMS,18.0,43.0,39.2,0.36,0.12
+AIIMS,Hauz Khas,18.0,43.0,39.2,0.36,0.12
+Hauz Khas,Dhaula Kuan,21.2,33.9,31.1,0.45,0.41
+Dhaula Kuan,Hauz Khas,21.2,33.9,31.1,0.45,0.41
+Hauz Khas,Dwarka Sec 21,12.7,22.1,16.4,0.3,0.55
+Dwarka Sec 21,Hauz Khas,12.7,22.1,16.4,0.3,0.55
+Hauz Khas,Noida City Centre,13.4,22.2,28.7,0.64,0.54
+Noida City Centre,Hauz Khas,13.4,22.2,28.7,0.64,0.54
+Hauz Khas,Botanical Garden,5.3,13.0,7.9,0.78,0.54
+Botanical Garden,Hauz Khas,5.3,13.0,7.9,0.78,0.54
+Hauz Khas,Vaishali,6.1,10.4,8.4,0.42,0.86
+Vaishali,Hauz Khas,6.1,10.4,8.4,0.42,0.86
+Hauz Khas,Anand Vihar,19.1,30.5,41.3,0.06,0.48
+Anand Vihar,Hauz Khas,19.1,30.5,41.3,0.06,0.48
+Hauz Khas,Laxmi Nagar,15.8,37.5,24.8,0.86,0.79
+Laxmi Nagar,Hauz Khas,15.8,37.5,24.8,0.86,0.79
+Hauz Khas,Mayur Vihar,8.3,15.9,10.7,0.74,0.87
+Mayur Vihar,Hauz Khas,8.3,15.9,10.7,0.74,0.87
+Hauz Khas,Yamuna Bank,1.7,3.8,3.1,0.48,0.37
+Yamuna Bank,Hauz Khas,1.7,3.8,3.1,0.48,0.37
+Hauz Khas,New Ashok Nagar,17.6,29.3,26.2,0.53,0.15
+New Ashok Nagar,Hauz Khas,17.6,29.3,26.2,0.53,0.15
+Hauz Khas,Mandi House,7.5,12.9,10.8,0.75,0.08
+Mandi House,Hauz Khas,7.5,12.9,10.8,0.75,0.08
+Hauz Khas,Pragati Maidan,9.0,19.7,11.7,0.72,0.94
+Pragati Maidan,Hauz Khas,9.0,19.7,11.7,0.72,0.94
+Hauz Khas,Inderlok,22.8,35.0,36.9,0.2,0.11
+Inderlok,Hauz Khas,22.8,35.0,36.9,0.2,0.11
+Hauz Khas,Netaji Subhash Place,1.6,3.1,2.5,0.32,0.59
+Netaji Subhash Place,Hauz Khas,1.6,3.1,2.5,0.32,0.59
+Hauz Khas,Punjabi Bagh West,5.3,9.8,8.8,0.15,0.0
+Punjabi Bagh West,Hauz Khas,5.3,9.8,8.8,0.15,0.0
+Saket,Qutub Minar,13.4,29.0,23.4,0.24,0.49
+Qutub Minar,Saket,13.4,29.0,23.4,0.24,0.49
+Saket,Chhatarpur,6.9,16.3,10.2,0.5,0.75
+Chhatarpur,Saket,6.9,16.3,10.2,0.5,0.75
+Saket,AIIMS,0.8,1.6,1.4,0.27,0.58
+AIIMS,Saket,0.8,1.6,1.4,0.27,0.58
+Saket,Dhaula Kuan,6.2,15.1,8.7,0.62,0.38
+Dhaula Kuan,Saket,6.2,15.1,8.7,0.62,0.38
+Saket,Dwarka Sec 21,23.8,53.8,40.0,0.78,0.94
+Dwarka Sec 21,Saket,23.8,53.8,40.0,0.78,0.94
+Saket,Noida City Centre,17.9,31.6,38.7,0.76,0.64
+Noida City Centre,Saket,17.9,31.6,38.7,0.76,0.64
+Saket,Botanical Garden,19.3,41.0,39.2,0.11,0.45
+Botanical Garden,Saket,19.3,41.0,39.2,0.11,0.45
+Saket,Vaishali,19.0,29.0,43.6,0.93,0.22
+Vaishali,Saket,19.0,29.0,43.6,0.93,0.22
+Saket,Anand Vihar,1.2,1.9,1.5,0.35,0.13
+Anand Vihar,Saket,1.2,1.9,1.5,0.35,0.13
+Saket,Laxmi Nagar,22.5,41.5,56.1,0.66,0.79
+Laxmi Nagar,Saket,22.5,41.5,56.1,0.66,0.79
+Saket,Mayur Vihar,21.8,42.4,33.2,0.07,0.27
+Mayur Vihar,Saket,21.8,42.4,33.2,0.07,0.27
+Saket,Yamuna Bank,0.9,1.8,1.7,0.7,0.64
+Yamuna Bank,Saket,0.9,1.8,1.7,0.7,0.64
+Saket,New Ashok Nagar,20.9,37.1,29.5,0.64,0.75
+New Ashok Nagar,Saket,20.9,37.1,29.5,0.64,0.75
+Saket,Mandi House,11.8,27.6,25.7,0.21,0.75
+Mandi House,Saket,11.8,27.6,25.7,0.21,0.75
+Saket,Pragati Maidan,23.5,50.9,46.9,0.0,0.64
+Pragati Maidan,Saket,23.5,50.9,46.9,0.0,0.64
+Saket,Inderlok,9.4,18.7,16.4,0.5,0.13
+Inderlok,Saket,9.4,18.7,16.4,0.5,0.13
+Saket,Netaji Subhash Place,3.8,6.6,6.5,0.87,0.9
+Netaji Subhash Place,Saket,3.8,6.6,6.5,0.87,0.9
+Saket,Punjabi Bagh West,23.0,52.1,49.3,0.13,0.58
+Punjabi Bagh West,Saket,23.0,52.1,49.3,0.13,0.58
+Qutub Minar,Chhatarpur,21.1,38.1,42.1,0.02,0.61
+Chhatarpur,Qutub Minar,21.1,38.1,42.1,0.02,0.61
+Qutub Minar,AIIMS,21.4,44.6,52.4,0.55,0.18
+AIIMS,Qutub Minar,21.4,44.6,52.4,0.55,0.18
+Qutub Minar,Dhaula Kuan,11.3,22.0,20.5,0.91,0.97
+Dhaula Kuan,Qutub Minar,11.3,22.0,20.5,0.91,0.97
+Qutub Minar,Dwarka Sec 21,20.2,32.5,48.5,0.69,0.47
+Dwarka Sec 21,Qutub Minar,20.2,32.5,48.5,0.69,0.47
+Qutub Minar,Noida City Centre,18.4,28.9,31.1,0.15,0.98
+Noida City Centre,Qutub Minar,18.4,28.9,31.1,0.15,0.98
+Qutub Minar,Botanical Garden,6.2,11.3,10.1,0.58,0.35
+Botanical Garden,Qutub Minar,6.2,11.3,10.1,0.58,0.35
+Qutub Minar,Vaishali,0.9,1.8,1.3,0.81,0.53
+Vaishali,Qutub Minar,0.9,1.8,1.3,0.81,0.53
+Qutub Minar,Anand Vihar,22.5,34.7,38.2,0.28,0.27
+Anand Vihar,Qutub Minar,22.5,34.7,38.2,0.28,0.27
+Qutub Minar,Laxmi Nagar,4.9,10.1,9.3,0.79,0.53
+Laxmi Nagar,Qutub Minar,4.9,10.1,9.3,0.79,0.53
+Qutub Minar,Mayur Vihar,16.4,37.2,27.2,0.54,0.07
+Mayur Vihar,Qutub Minar,16.4,37.2,27.2,0.54,0.07
+Qutub Minar,Yamuna Bank,21.1,36.1,36.1,0.85,0.17
+Yamuna Bank,Qutub Minar,21.1,36.1,36.1,0.85,0.17
+Qutub Minar,New Ashok Nagar,24.0,37.8,53.8,0.81,0.21
+New Ashok Nagar,Qutub Minar,24.0,37.8,53.8,0.81,0.21
+Qutub Minar,Mandi House,6.9,11.1,16.1,0.99,0.85
+Mandi House,Qutub Minar,6.9,11.1,16.1,0.99,0.85
+Qutub Minar,Pragati Maidan,15.3,24.3,26.7,0.28,0.25
+Pragati Maidan,Qutub Minar,15.3,24.3,26.7,0.28,0.25
+Qutub Minar,Inderlok,16.8,29.2,30.3,0.34,0.52
+Inderlok,Qutub Minar,16.8,29.2,30.3,0.34,0.52
+Qutub Minar,Netaji Subhash Place,0.8,2.0,1.0,0.92,0.08
+Netaji Subhash Place,Qutub Minar,0.8,2.0,1.0,0.92,0.08
+Qutub Minar,Punjabi Bagh West,2.5,4.5,3.1,0.67,0.31
+Punjabi Bagh West,Qutub Minar,2.5,4.5,3.1,0.67,0.31
+Chhatarpur,AIIMS,18.0,40.6,31.3,0.93,0.53
+AIIMS,Chhatarpur,18.0,40.6,31.3,0.93,0.53
+Chhatarpur,Dhaula Kuan,16.5,37.3,23.6,0.24,0.56
+Dhaula Kuan,Chhatarpur,16.5,37.3,23.6,0.24,0.56
+Chhatarpur,Dwarka Sec 21,11.4,18.7,19.5,0.15,0.01
+Dwarka Sec 21,Chhatarpur,11.4,18.7,19.5,0.15,0.01
+Chhatarpur,Noida City Centre,19.4,31.0,44.3,0.7,0.04
+Noida City Centre,Chhatarpur,19.4,31.0,44.3,0.7,0.04
+Chhatarpur,Botanical Garden,3.3,5.6,8.2,0.88,0.58
+Botanical Garden,Chhatarpur,3.3,5.6,8.2,0.88,0.58
+Chhatarpur,Vaishali,20.1,32.3,25.3,0.48,0.33
+Vaishali,Chhatarpur,20.1,32.3,25.3,0.48,0.33
+Chhatarpur,Anand Vihar,13.1,25.6,28.1,0.53,0.97
+Anand Vihar,Chhatarpur,13.1,25.6,28.1,0.53,0.97
+Chhatarpur,Laxmi Nagar,4.6,7.6,7.5,0.75,0.85
+Laxmi Nagar,Chhatarpur,4.6,7.6,7.5,0.75,0.85
+Chhatarpur,Mayur Vihar,21.2,32.2,27.2,0.9,0.27
+Mayur Vihar,Chhatarpur,21.2,32.2,27.2,0.9,0.27
+Chhatarpur,Yamuna Bank,3.9,6.5,6.1,0.97,0.43
+Yamuna Bank,Chhatarpur,3.9,6.5,6.1,0.97,0.43
+Chhatarpur,New Ashok Nagar,24.1,50.7,35.5,0.32,0.29
+New Ashok Nagar,Chhatarpur,24.1,50.7,35.5,0.32,0.29
+Chhatarpur,Mandi House,10.4,23.5,25.4,0.03,0.28
+Mandi House,Chhatarpur,10.4,23.5,25.4,0.03,0.28
+Chhatarpur,Pragati Maidan,17.5,30.8,35.2,0.2,0.58
+Pragati Maidan,Chhatarpur,17.5,30.8,35.2,0.2,0.58
+Chhatarpur,Inderlok,21.5,42.4,32.0,0.12,0.36
+Inderlok,Chhatarpur,21.5,42.4,32.0,0.12,0.36
+Chhatarpur,Netaji Subhash Place,16.7,35.6,35.9,0.71,0.9
+Netaji Subhash Place,Chhatarpur,16.7,35.6,35.9,0.71,0.9
+Chhatarpur,Punjabi Bagh West,22.4,47.7,40.8,0.81,0.77
+Punjabi Bagh West,Chhatarpur,22.4,47.7,40.8,0.81,0.77
+AIIMS,Dhaula Kuan,19.5,38.1,37.8,0.02,0.37
+Dhaula Kuan,AIIMS,19.5,38.1,37.8,0.02,0.37
+AIIMS,Dwarka Sec 21,3.6,7.5,6.2,0.75,0.85
+Dwarka Sec 21,AIIMS,3.6,7.5,6.2,0.75,0.85
+AIIMS,Noida City Centre,12.0,21.3,15.0,0.5,0.92
+Noida City Centre,AIIMS,12.0,21.3,15.0,0.5,0.92
+AIIMS,Botanical Garden,9.2,15.9,18.1,0.07,0.52
+Botanical Garden,AIIMS,9.2,15.9,18.1,0.07,0.52
+AIIMS,Vaishali,22.5,34.9,42.8,0.16,0.47
+Vaishali,AIIMS,22.5,34.9,42.8,0.16,0.47
+AIIMS,Anand Vihar,6.9,12.9,13.4,0.78,0.14
+Anand Vihar,AIIMS,6.9,12.9,13.4,0.78,0.14
+AIIMS,Laxmi Nagar,15.2,37.3,30.1,0.5,0.33
+Laxmi Nagar,AIIMS,15.2,37.3,30.1,0.5,0.33
+AIIMS,Mayur Vihar,19.0,31.4,42.1,0.17,0.84
+Mayur Vihar,AIIMS,19.0,31.4,42.1,0.17,0.84
+AIIMS,Yamuna Bank,13.7,32.3,29.1,0.28,0.32
+Yamuna Bank,AIIMS,13.7,32.3,29.1,0.28,0.32
+AIIMS,New Ashok Nagar,9.3,20.7,21.4,0.07,0.92
+New Ashok Nagar,AIIMS,9.3,20.7,21.4,0.07,0.92
+AIIMS,Mandi House,15.3,28.5,38.1,0.85,0.69
+Mandi House,AIIMS,15.3,28.5,38.1,0.85,0.69
+AIIMS,Pragati Maidan,8.6,14.7,18.2,0.01,0.88
+Pragati Maidan,AIIMS,8.6,14.7,18.2,0.01,0.88
+AIIMS,Inderlok,6.1,12.9,9.7,0.41,0.91
+Inderlok,AIIMS,6.1,12.9,9.7,0.41,0.91
+AIIMS,Netaji Subhash Place,3.0,4.8,4.8,0.18,0.11
+Netaji Subhash Place,AIIMS,3.0,4.8,4.8,0.18,0.11
+AIIMS,Punjabi Bagh West,9.9,17.1,19.0,0.33,0.21
+Punjabi Bagh West,AIIMS,9.9,17.1,19.0,0.33,0.21
+Dhaula Kuan,Dwarka Sec 21,4.8,8.4,9.7,0.65,0.11
+Dwarka Sec 21,Dhaula Kuan,4.8,8.4,9.7,0.65,0.11
+Dhaula Kuan,Noida City Centre,18.4,30.4,37.2,0.1,0.05
+Noida City Centre,Dhaula Kuan,18.4,30.4,37.2,0.1,0.05
+Dhaula Kuan,Botanical Garden,11.0,18.1,22.6,0.99,0.05
+Botanical Garden,Dhaula Kuan,11.0,18.1,22.6,0.99,0.05
+Dhaula Kuan,Vaishali,18.1,32.6,34.2,0.67,0.65
+Vaishali,Dhaula Kuan,18.1,32.6,34.2,0.67,0.65
+Dhaula Kuan,Anand Vihar,9.2,17.0,20.1,0.2,0.19
+Anand Vihar,Dhaula Kuan,9.2,17.0,20.1,0.2,0.19
+Dhaula Kuan,Laxmi Nagar,20.4,38.3,41.9,0.6,0.44
+Laxmi Nagar,Dhaula Kuan,20.4,38.3,41.9,0.6,0.44
+Dhaula Kuan,Mayur Vihar,1.6,3.9,2.3,0.52,0.48
+Mayur Vihar,Dhaula Kuan,1.6,3.9,2.3,0.52,0.48
+Dhaula Kuan,Yamuna Bank,22.7,48.5,43.7,0.42,0.64
+Yamuna Bank,Dhaula Kuan,22.7,48.5,43.7,0.42,0.64
+Dhaula Kuan,New Ashok Nagar,16.1,30.5,23.5,0.01,0.73
+New Ashok Nagar,Dhaula Kuan,16.1,30.5,23.5,0.01,0.73
+Dhaula Kuan,Mandi House,12.3,24.2,27.9,0.74,0.29
+Mandi House,Dhaula Kuan,12.3,24.2,27.9,0.74,0.29
+Dhaula Kuan,Pragati Maidan,13.5,26.0,32.8,0.15,0.97
+Pragati Maidan,Dhaula Kuan,13.5,26.0,32.8,0.15,0.97
+Dhaula Kuan,Inderlok,5.5,9.8,10.0,0.87,0.08
+Inderlok,Dhaula Kuan,5.5,9.8,10.0,0.87,0.08
+Dhaula Kuan,Netaji Subhash Place,13.9,31.9,19.6,0.51,0.06
+Netaji Subhash Place,Dhaula Kuan,13.9,31.9,19.6,0.51,0.06
+Dhaula Kuan,Punjabi Bagh West,3.4,5.4,5.0,0.91,0.2
+Punjabi Bagh West,Dhaula Kuan,3.4,5.4,5.0,0.91,0.2
+Dwarka Sec 21,Noida City Centre,3.1,7.4,4.3,0.23,0.12
+Noida City Centre,Dwarka Sec 21,3.1,7.4,4.3,0.23,0.12
+Dwarka Sec 21,Botanical Garden,18.2,35.4,21.8,0.98,0.48
+Botanical Garden,Dwarka Sec 21,18.2,35.4,21.8,0.98,0.48
+Dwarka Sec 21,Vaishali,21.9,53.0,43.7,0.93,0.94
+Vaishali,Dwarka Sec 21,21.9,53.0,43.7,0.93,0.94
+Dwarka Sec 21,Anand Vihar,22.7,44.5,51.5,0.9,0.53
+Anand Vihar,Dwarka Sec 21,22.7,44.5,51.5,0.9,0.53
+Dwarka Sec 21,Laxmi Nagar,23.4,48.7,28.7,0.14,0.9
+Laxmi Nagar,Dwarka Sec 21,23.4,48.7,28.7,0.14,0.9
+Dwarka Sec 21,Mayur Vihar,5.3,11.8,12.5,0.39,0.84
+Mayur Vihar,Dwarka Sec 21,5.3,11.8,12.5,0.39,0.84
+Dwarka Sec 21,Yamuna Bank,17.2,42.0,23.9,0.47,0.28
+Yamuna Bank,Dwarka Sec 21,17.2,42.0,23.9,0.47,0.28
+Dwarka Sec 21,New Ashok Nagar,22.6,52.2,30.4,0.56,0.64
+New Ashok Nagar,Dwarka Sec 21,22.6,52.2,30.4,0.56,0.64
+Dwarka Sec 21,Mandi House,6.9,12.5,16.6,0.58,0.22
+Mandi House,Dwarka Sec 21,6.9,12.5,16.6,0.58,0.22
+Dwarka Sec 21,Pragati Maidan,21.9,41.3,42.1,0.4,0.49
+Pragati Maidan,Dwarka Sec 21,21.9,41.3,42.1,0.4,0.49
+Dwarka Sec 21,Inderlok,4.3,9.1,8.1,0.41,0.28
+Inderlok,Dwarka Sec 21,4.3,9.1,8.1,0.41,0.28
+Dwarka Sec 21,Netaji Subhash Place,3.5,6.5,5.9,0.88,0.64
+Netaji Subhash Place,Dwarka Sec 21,3.5,6.5,5.9,0.88,0.64
+Dwarka Sec 21,Punjabi Bagh West,3.7,5.7,9.2,0.82,0.45
+Punjabi Bagh West,Dwarka Sec 21,3.7,5.7,9.2,0.82,0.45
+Noida City Centre,Botanical Garden,15.2,33.5,31.5,0.38,0.59
+Botanical Garden,Noida City Centre,15.2,33.5,31.5,0.38,0.59
+Noida City Centre,Vaishali,13.5,26.9,26.3,0.53,0.31
+Vaishali,Noida City Centre,13.5,26.9,26.3,0.53,0.31
+Noida City Centre,Anand Vihar,20.8,51.6,29.1,0.09,0.54
+Anand Vihar,Noida City Centre,20.8,51.6,29.1,0.09,0.54
+Noida City Centre,Laxmi Nagar,9.0,17.4,12.0,0.51,0.79
+Laxmi Nagar,Noida City Centre,9.0,17.4,12.0,0.51,0.79
+Noida City Centre,Mayur Vihar,5.8,9.4,12.6,0.94,0.22
+Mayur Vihar,Noida City Centre,5.8,9.4,12.6,0.94,0.22
+Noida City Centre,Yamuna Bank,4.5,10.4,8.3,0.2,0.49
+Yamuna Bank,Noida City Centre,4.5,10.4,8.3,0.2,0.49
+Noida City Centre,New Ashok Nagar,22.6,55.6,34.2,0.73,0.35
+New Ashok Nagar,Noida City Centre,22.6,55.6,34.2,0.73,0.35
+Noida City Centre,Mandi House,9.7,20.1,23.3,0.87,0.57
+Mandi House,Noida City Centre,9.7,20.1,23.3,0.87,0.57
+Noida City Centre,Pragati Maidan,5.8,13.2,9.9,0.76,0.65
+Pragati Maidan,Noida City Centre,5.8,13.2,9.9,0.76,0.65
+Noida City Centre,Inderlok,9.8,23.0,19.4,0.33,0.96
+Inderlok,Noida City Centre,9.8,23.0,19.4,0.33,0.96
+Noida City Centre,Netaji Subhash Place,10.8,18.3,23.6,0.42,0.69
+Netaji Subhash Place,Noida City Centre,10.8,18.3,23.6,0.42,0.69
+Noida City Centre,Punjabi Bagh West,15.6,38.8,32.5,0.45,0.61
+Punjabi Bagh West,Noida City Centre,15.6,38.8,32.5,0.45,0.61
+Botanical Garden,Vaishali,3.4,5.6,6.5,0.9,0.91
+Vaishali,Botanical Garden,3.4,5.6,6.5,0.9,0.91
+Botanical Garden,Anand Vihar,12.8,27.2,18.0,0.37,0.82
+Anand Vihar,Botanical Garden,12.8,27.2,18.0,0.37,0.82
+Botanical Garden,Laxmi Nagar,12.3,20.5,21.8,0.87,0.21
+Laxmi Nagar,Botanical Garden,12.3,20.5,21.8,0.87,0.21
+Botanical Garden,Mayur Vihar,16.8,27.0,38.2,0.56,0.92
+Mayur Vihar,Botanical Garden,16.8,27.0,38.2,0.56,0.92
+Botanical Garden,Yamuna Bank,10.6,20.0,24.0,0.04,0.32
+Yamuna Bank,Botanical Garden,10.6,20.0,24.0,0.04,0.32
+Botanical Garden,New Ashok Nagar,24.9,46.6,38.8,0.68,0.29
+New Ashok Nagar,Botanical Garden,24.9,46.6,38.8,0.68,0.29
+Botanical Garden,Mandi House,14.4,36.0,34.7,0.19,0.86
+Mandi House,Botanical Garden,14.4,36.0,34.7,0.19,0.86
+Botanical Garden,Pragati Maidan,6.4,15.9,10.5,0.71,0.64
+Pragati Maidan,Botanical Garden,6.4,15.9,10.5,0.71,0.64
+Botanical Garden,Inderlok,17.5,39.5,41.6,0.69,0.92
+Inderlok,Botanical Garden,17.5,39.5,41.6,0.69,0.92
+Botanical Garden,Netaji Subhash Place,23.5,54.3,35.3,0.38,0.64
+Netaji Subhash Place,Botanical Garden,23.5,54.3,35.3,0.38,0.64
+Botanical Garden,Punjabi Bagh West,11.8,18.5,23.1,0.46,0.89
+Punjabi Bagh West,Botanical Garden,11.8,18.5,23.1,0.46,0.89
+Vaishali,Anand Vihar,6.3,14.4,12.4,0.35,0.32
+Anand Vihar,Vaishali,6.3,14.4,12.4,0.35,0.32
+Vaishali,Laxmi Nagar,2.4,5.5,5.0,0.2,0.89
+Laxmi Nagar,Vaishali,2.4,5.5,5.0,0.2,0.89
+Vaishali,Mayur Vihar,22.9,45.3,52.5,0.49,0.03
+Mayur Vihar,Vaishali,22.9,45.3,52.5,0.49,0.03
+Vaishali,Yamuna Bank,2.5,5.0,4.8,0.16,0.09
+Yamuna Bank,Vaishali,2.5,5.0,4.8,0.16,0.09
+Vaishali,New Ashok Nagar,22.0,41.4,26.7,0.87,0.4
+New Ashok Nagar,Vaishali,22.0,41.4,26.7,0.87,0.4
+Vaishali,Mandi House,8.7,20.5,13.7,0.99,0.04
+Mandi House,Vaishali,8.7,20.5,13.7,0.99,0.04
+Vaishali,Pragati Maidan,3.4,5.1,6.2,0.75,0.98
+Pragati Maidan,Vaishali,3.4,5.1,6.2,0.75,0.98
+Vaishali,Inderlok,5.0,10.8,10.0,0.35,0.61
+Inderlok,Vaishali,5.0,10.8,10.0,0.35,0.61
+Vaishali,Netaji Subhash Place,3.7,7.8,4.9,0.16,0.62
+Netaji Subhash Place,Vaishali,3.7,7.8,4.9,0.16,0.62
+Vaishali,Punjabi Bagh West,16.8,31.6,22.3,0.39,0.16
+Punjabi Bagh West,Vaishali,16.8,31.6,22.3,0.39,0.16
+Anand Vihar,Laxmi Nagar,22.2,36.5,52.9,0.87,0.33
+Laxmi Nagar,Anand Vihar,22.2,36.5,52.9,0.87,0.33
+Anand Vihar,Mayur Vihar,21.1,46.7,45.5,0.75,0.96
+Mayur Vihar,Anand Vihar,21.1,46.7,45.5,0.75,0.96
+Anand Vihar,Yamuna Bank,25.0,56.2,53.5,0.28,0.39
+Yamuna Bank,Anand Vihar,25.0,56.2,53.5,0.28,0.39
+Anand Vihar,New Ashok Nagar,18.0,43.9,45.0,0.27,0.63
+New Ashok Nagar,Anand Vihar,18.0,43.9,45.0,0.27,0.63
+Anand Vihar,Mandi House,3.2,6.9,7.1,0.56,0.64
+Mandi House,Anand Vihar,3.2,6.9,7.1,0.56,0.64
+Anand Vihar,Pragati Maidan,19.8,44.4,46.2,0.15,0.35
+Pragati Maidan,Anand Vihar,19.8,44.4,46.2,0.15,0.35
+Anand Vihar,Inderlok,17.2,31.1,31.3,0.05,0.67
+Inderlok,Anand Vihar,17.2,31.1,31.3,0.05,0.67
+Anand Vihar,Netaji Subhash Place,23.8,52.4,41.3,0.28,0.22
+Netaji Subhash Place,Anand Vihar,23.8,52.4,41.3,0.28,0.22
+Anand Vihar,Punjabi Bagh West,15.3,32.7,29.5,0.71,0.92
+Punjabi Bagh West,Anand Vihar,15.3,32.7,29.5,0.71,0.92
+Laxmi Nagar,Mayur Vihar,1.3,2.8,2.7,0.27,0.31
+Mayur Vihar,Laxmi Nagar,1.3,2.8,2.7,0.27,0.31
+Laxmi Nagar,Yamuna Bank,22.2,47.7,32.5,0.18,0.7
+Yamuna Bank,Laxmi Nagar,22.2,47.7,32.5,0.18,0.7
+Laxmi Nagar,New Ashok Nagar,11.7,23.9,18.7,0.06,0.89
+New Ashok Nagar,Laxmi Nagar,11.7,23.9,18.7,0.06,0.89
+Laxmi Nagar,Mandi House,24.9,55.7,61.6,0.77,0.2
+Mandi House,Laxmi Nagar,24.9,55.7,61.6,0.77,0.2
+Laxmi Nagar,Pragati Maidan,4.5,9.9,5.7,0.55,0.16
+Pragati Maidan,Laxmi Nagar,4.5,9.9,5.7,0.55,0.16
+Laxmi Nagar,Inderlok,4.6,8.7,7.6,0.76,0.57
+Inderlok,Laxmi Nagar,4.6,8.7,7.6,0.76,0.57
+Laxmi Nagar,Netaji Subhash Place,16.8,37.3,28.0,0.54,0.86
+Netaji Subhash Place,Laxmi Nagar,16.8,37.3,28.0,0.54,0.86
+Laxmi Nagar,Punjabi Bagh West,7.0,10.8,13.9,0.83,0.83
+Punjabi Bagh West,Laxmi Nagar,7.0,10.8,13.9,0.83,0.83
+Mayur Vihar,Yamuna Bank,13.8,32.9,22.8,0.78,0.72
+Yamuna Bank,Mayur Vihar,13.8,32.9,22.8,0.78,0.72
+Mayur Vihar,New Ashok Nagar,5.6,8.5,11.4,0.87,0.91
+New Ashok Nagar,Mayur Vihar,5.6,8.5,11.4,0.87,0.91
+Mayur Vihar,Mandi House,15.2,29.1,29.4,0.78,0.82
+Mandi House,Mayur Vihar,15.2,29.1,29.4,0.78,0.82
+Mayur Vihar,Pragati Maidan,24.1,45.0,34.6,0.53,0.96
+Pragati Maidan,Mayur Vihar,24.1,45.0,34.6,0.53,0.96
+Mayur Vihar,Inderlok,19.1,33.3,26.9,0.63,0.49
+Inderlok,Mayur Vihar,19.1,33.3,26.9,0.63,0.49
+Mayur Vihar,Netaji Subhash Place,16.9,36.4,26.4,0.74,0.17
+Netaji Subhash Place,Mayur Vihar,16.9,36.4,26.4,0.74,0.17
+Mayur Vihar,Punjabi Bagh West,11.0,25.5,14.0,0.73,0.77
+Punjabi Bagh West,Mayur Vihar,11.0,25.5,14.0,0.73,0.77
+Yamuna Bank,New Ashok Nagar,6.8,15.1,10.8,0.61,0.58
+New Ashok Nagar,Yamuna Bank,6.8,15.1,10.8,0.61,0.58
+Yamuna Bank,Mandi House,1.8,2.9,3.5,0.1,0.19
+Mandi House,Yamuna Bank,1.8,2.9,3.5,0.1,0.19
+Yamuna Bank,Pragati Maidan,20.6,32.6,44.0,0.51,0.55
+Pragati Maidan,Yamuna Bank,20.6,32.6,44.0,0.51,0.55
+Yamuna Bank,Inderlok,17.6,38.5,27.6,0.6,0.14
+Inderlok,Yamuna Bank,17.6,38.5,27.6,0.6,0.14
+Yamuna Bank,Netaji Subhash Place,14.7,22.9,34.3,0.0,0.71
+Netaji Subhash Place,Yamuna Bank,14.7,22.9,34.3,0.0,0.71
+Yamuna Bank,Punjabi Bagh West,14.6,27.5,20.6,0.01,0.04
+Punjabi Bagh West,Yamuna Bank,14.6,27.5,20.6,0.01,0.04
+New Ashok Nagar,Mandi House,4.8,11.6,10.3,0.03,0.91
+Mandi House,New Ashok Nagar,4.8,11.6,10.3,0.03,0.91
+New Ashok Nagar,Pragati Maidan,12.1,25.7,17.9,0.31,0.03
+Pragati Maidan,New Ashok Nagar,12.1,25.7,17.9,0.31,0.03
+New Ashok Nagar,Inderlok,16.2,36.4,21.5,0.09,0.08
+Inderlok,New Ashok Nagar,16.2,36.4,21.5,0.09,0.08
+New Ashok Nagar,Netaji Subhash Place,13.0,26.4,19.5,0.16,0.02
+Netaji Subhash Place,New Ashok Nagar,13.0,26.4,19.5,0.16,0.02
+New Ashok Nagar,Punjabi Bagh West,10.6,22.1,21.8,0.54,0.9
+Punjabi Bagh West,New Ashok Nagar,10.6,22.1,21.8,0.54,0.9
+Mandi House,Pragati Maidan,16.4,34.6,40.1,0.96,0.76
+Pragati Maidan,Mandi House,16.4,34.6,40.1,0.96,0.76
+Mandi House,Inderlok,1.7,3.0,3.8,0.26,0.72
+Inderlok,Mandi House,1.7,3.0,3.8,0.26,0.72
+Mandi House,Netaji Subhash Place,23.9,38.0,46.7,0.37,0.36
+Netaji Subhash Place,Mandi House,23.9,38.0,46.7,0.37,0.36
+Mandi House,Punjabi Bagh West,10.1,23.4,13.9,0.93,0.56
+Punjabi Bagh West,Mandi House,10.1,23.4,13.9,0.93,0.56
+Pragati Maidan,Inderlok,4.1,7.7,7.3,0.03,0.67
+Inderlok,Pragati Maidan,4.1,7.7,7.3,0.03,0.67
+Pragati Maidan,Netaji Subhash Place,7.6,12.8,14.8,0.7,0.93
+Netaji Subhash Place,Pragati Maidan,7.6,12.8,14.8,0.7,0.93
+Pragati Maidan,Punjabi Bagh West,8.9,19.6,16.7,0.89,0.68
+Punjabi Bagh West,Pragati Maidan,8.9,19.6,16.7,0.89,0.68
+Inderlok,Netaji Subhash Place,11.2,19.5,24.4,0.42,0.82
+Netaji Subhash Place,Inderlok,11.2,19.5,24.4,0.42,0.82
+Inderlok,Punjabi Bagh West,17.3,28.9,32.4,0.71,0.36
+Punjabi Bagh West,Inderlok,17.3,28.9,32.4,0.71,0.36
+Netaji Subhash Place,Punjabi Bagh West,20.6,45.6,32.5,0.15,0.64
+Punjabi Bagh West,Netaji Subhash Place,20.6,45.6,32.5,0.15,0.64
