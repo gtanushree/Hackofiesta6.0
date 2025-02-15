@@ -9,29 +9,39 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "leaflet.heat";
 import {
   TextField,
   Button as MuiButton,
   Typography,
   Box,
-  Autocomplete,
+  Card,
 } from "@mui/material";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/animations/loading.json";
 import Icon from "../assets/images/marker-icon.png";
-import { useRouteError } from "react-router-dom";
 
 // Color Scheme
-const colors = {
-  darkBlue: "#0a192f",
-  accentGreen: "#64ffda",
-  accentRed: "#f07178",
-  lightText: "#ccd6f6",
-  secondaryBg: "#112240",
+const themeColors = {
+  dark: {
+    background: "#0a192f",
+    accentGreen: "#64ffda",
+    accentRed: "#f07178",
+    text: "#ccd6f6",
+    cardBackground: "rgba(255, 255, 255, 0.1)",
+    cardBorder: "rgba(100, 255, 218, 0.5)",
+  },
+  light: {
+    background: "#ffffff",
+    accentGreen: "#00bcd4",
+    accentRed: "#ff5252",
+    text: "#333333",
+    cardBackground: "rgba(0, 0, 0, 0.1)",
+    cardBorder: "rgba(0, 188, 212, 0.5)",
+  },
 };
 
+// Custom Icon for Markers
 const customIcon = L.icon({
   iconUrl: Icon,
   iconSize: [32, 52],
@@ -39,12 +49,8 @@ const customIcon = L.icon({
   popupAnchor: [1, -34],
 });
 
-// Update map bounds when both start and destination coordinates are available.
-const UpdateMapBounds = ({
-  startCoords,
-  destinationCoords,
-  fallbackCenter,
-}) => {
+// Update Map Bounds
+const UpdateMapBounds = ({ startCoords, destinationCoords, fallbackCenter }) => {
   const map = useMap();
   useEffect(() => {
     if (startCoords && destinationCoords) {
@@ -57,7 +63,8 @@ const UpdateMapBounds = ({
   return null;
 };
 
-const TrafficAnalysis = () => {
+const TrafficAnalysis = ({ theme }) => {
+  const colors = themeColors[theme];
   const [route, setRoute] = useState({
     start: "",
     destination: "",
@@ -73,9 +80,8 @@ const TrafficAnalysis = () => {
     vehicleCount: 0,
   });
 
-  const [locationSuggestions, setLocationSuggestions] = useState([]);
-  const [star,setStar]=useState("");
-  const [dest,setDest]=useState("");
+  const [star, setStar] = useState("");
+  const [dest, setDest] = useState("");
 
   // Retrieve user's current location on mount.
   useEffect(() => {
@@ -118,7 +124,7 @@ const TrafficAnalysis = () => {
 
     try {
       const response = await fetch(
-        (import.meta.env.VITE_BACKEND_URL+"/routing/calculate-route"),
+        `${import.meta.env.VITE_BACKEND_URL}/routing/calculate-route`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -145,7 +151,7 @@ const TrafficAnalysis = () => {
         loading: false,
         vehicleCount: result.vehicle_count || 0,
         start: star,
-        destination:dest,
+        destination: dest,
       }));
     } catch (error) {
       setRoute((prev) => ({
@@ -156,25 +162,6 @@ const TrafficAnalysis = () => {
     }
   };
 
-  const fetchLocationSuggestions = async (query) => {
-    if (query.length > 2) {
-      try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${query}`
-        );
-        const data = await response.json();
-        setLocationSuggestions(
-          data.map((item) => ({
-            label: item.display_name,
-            value: `${item.lat},${item.lon}`,
-          }))
-        );
-      } catch (error) {
-        console.error("Error fetching location suggestions");
-      }
-    }
-  };
-
   const startMarkerPosition =
     route.start && route.startCoords ? route.startCoords : route.userLocation;
   const fallbackCenter = startMarkerPosition || [20.5937, 78.9629];
@@ -182,7 +169,7 @@ const TrafficAnalysis = () => {
   return (
     <div
       style={{
-        backgroundColor: colors.darkBlue,
+        backgroundColor: colors.background,
         minHeight: "100vh",
         padding: "2rem",
       }}
@@ -199,178 +186,120 @@ const TrafficAnalysis = () => {
         Route Planner
       </Typography>
 
+      {/* Search and Controls Section */}
       <Box
         sx={{
-          maxWidth: 600,
+          maxWidth: 800,
           mx: "auto",
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr 1fr" },
+          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr auto" },
           gap: 2,
           mb: 4,
           padding: "1rem",
           borderRadius: "16px",
-          background: `linear-gradient(135deg, ${colors.darkBlue}, ${colors.secondaryBg})`, // Gradient container
-          boxShadow: `0 8px 24px ${colors.accentGreen}40`, // Subtle glow
+          backgroundColor: colors.cardBackground,
+          backdropFilter: "blur(10px)",
+          border: `1px solid ${colors.cardBorder}`,
         }}
       >
-        {/* Start TextField */}
+        {/* Start Input */}
         <TextField
           fullWidth
           label="Start"
-          variant="filled"
+          variant="outlined"
           value={star}
-          onChange={(e) =>
-            setStar(e.target.value)
-          }
+          onChange={(e) => setStar(e.target.value)}
           InputProps={{
             endAdornment: (
               <DirectionsIcon
                 sx={{
                   color: colors.accentGreen,
-                  animation: "pulse 1.5s infinite alternate", // Neon pulse effect
                 }}
               />
             ),
           }}
-          InputLabelProps={{
-            shrink: true,
-          }}
           sx={{
-            backgroundColor: "rgba(255, 255, 255, 0.1)", // Frosted glass effect
-            backdropFilter: "blur(10px)", // Glassmorphism blur
-            borderRadius: "8px",
-            "& .MuiFilledInput-root": {
-              height: 56,
-              borderRadius: "8px",
-              paddingTop: "16px",
-              paddingLeft: "16px",
-              paddingRight: "16px",
-              transition: "box-shadow 0.3s ease", // Smooth transition for focus glow
+            "& .MuiOutlinedInput-root": {
+              color: colors.text,
+              "& fieldset": {
+                borderColor: colors.cardBorder,
+              },
+              "&:hover fieldset": {
+                borderColor: colors.accentGreen,
+              },
             },
             "& .MuiInputLabel-root": {
-              color: `${colors.lightText}CC`,
-              fontSize: "0.85rem",
-            },
-            "& .MuiFilledInput-input": {
-              color: colors.lightText,
-              fontSize: "0.95rem",
-              lineHeight: "56px",
-            },
-            "& .MuiFilledInput-root.Mui-focused": {
-              boxShadow: `0 0 16px ${colors.accentGreen}`, // Stronger neon glow
+              color: colors.text,
             },
           }}
         />
 
-        {/* Destination TextField */}
+        {/* Destination Input */}
         <TextField
           fullWidth
           label="Destination"
-          variant="filled"
+          variant="outlined"
           value={dest}
-          onChange={(e) =>
-            setDest(e.target.value)
-          }
+          onChange={(e) => setDest(e.target.value)}
           InputProps={{
             endAdornment: (
               <DirectionsIcon
                 sx={{
                   color: colors.accentRed,
-                  animation: "pulse 1.5s infinite alternate", // Neon pulse effect
                 }}
               />
             ),
           }}
-          InputLabelProps={{
-            shrink: true,
-          }}
           sx={{
-            backgroundColor: "rgba(255, 255, 255, 0.1)", // Frosted glass effect
-            backdropFilter: "blur(10px)", // Glassmorphism blur
-            borderRadius: "8px",
-            "& .MuiFilledInput-root": {
-              height: 56,
-              borderRadius: "8px",
-              paddingTop: "16px",
-              paddingLeft: "16px",
-              paddingRight: "16px",
-              transition: "box-shadow 0.3s ease", // Smooth transition for focus glow
+            "& .MuiOutlinedInput-root": {
+              color: colors.text,
+              "& fieldset": {
+                borderColor: colors.cardBorder,
+              },
+              "&:hover fieldset": {
+                borderColor: colors.accentRed,
+              },
             },
             "& .MuiInputLabel-root": {
-              color: `${colors.lightText}CC`,
-              fontSize: "0.85rem",
-            },
-            "& .MuiFilledInput-input": {
-              color: colors.lightText,
-              fontSize: "0.95rem",
-              lineHeight: "56px",
-            },
-            "& .MuiFilledInput-root.Mui-focused": {
-              boxShadow: `0 0 16px ${colors.accentRed}`, // Stronger neon glow
+              color: colors.text,
             },
           }}
         />
 
-        {/* Button */}
+        {/* Calculate Route Button */}
         <MuiButton
-          fullWidth
           variant="contained"
           onClick={calculateRoute}
           disabled={route.loading}
           sx={{
-            backgroundColor: `linear-gradient(90deg, ${colors.accentGreen}, ${colors.accentBlue})`, // Gradient button
-            color: colors.darkBlue,
+            backgroundColor: colors.accentGreen,
+            color: colors.background,
             fontWeight: "bold",
-            fontSize: "0.95rem",
-            height: 56,
-            borderRadius: "8px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "transform 0.3s ease, box-shadow 0.3s ease", // Hover animations
-            boxShadow: `0 4px 12px ${colors.accentGreen}80`,
             "&:hover": {
-              transform: "scale(1.05)", // Slightly grow on hover
-              boxShadow: `0 8px 20px ${colors.accentGreen}80`, // Enhanced glow
-            },
-            "&:disabled": {
-              backgroundColor: `${colors.accentGreen}80`,
-              color: `${colors.darkBlue}80`,
+              backgroundColor: colors.accentGreen,
+              opacity: 0.9,
             },
           }}
-          startIcon={
-            route.loading && (
-              <Lottie
-                animationData={loadingAnimation}
-                style={{ width: 40, height: 40 }}
-              />
-            )
-          }
         >
-          {route.loading ? "Calculating Route..." : "Find Optimal Route"}
+          {route.loading ? (
+            <Lottie
+              animationData={loadingAnimation}
+              style={{ width: 24, height: 24 }}
+            />
+          ) : (
+            "Calculate Route"
+          )}
         </MuiButton>
       </Box>
 
-      {route.error && (
-        <Typography
-          sx={{
-            color: colors.accentRed,
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: "1.5rem",
-          }}
-        >
-          ⚠️ {route.error}
-        </Typography>
-      )}
-
+      {/* Map Section */}
       <Box
         sx={{
           height: "60vh",
           width: "100%",
           borderRadius: "12px",
           overflow: "hidden",
-          boxShadow: `0 8px 32px ${colors.darkBlue}80`,
+          boxShadow: `0 8px 32px ${colors.cardBorder}50`,
           marginBottom: "2rem",
         }}
       >
@@ -390,6 +319,7 @@ const TrafficAnalysis = () => {
             destinationCoords={route.destinationCoords}
             fallbackCenter={fallbackCenter}
           />
+
           {startMarkerPosition && (
             <Marker position={startMarkerPosition} icon={customIcon}>
               <Popup>{route.start ? route.start : "Current Location"}</Popup>
@@ -403,40 +333,23 @@ const TrafficAnalysis = () => {
           {route.path && (
             <Polyline
               positions={route.path}
-              pathOptions={{ color: "purple", weight: 5 }}
+              pathOptions={{ color: colors.accentGreen, weight: 5 }}
             />
           )}
         </MapContainer>
       </Box>
 
-      {/* Keyframes for Neon Pulse Effect */}
-
-      {route.error && (
-        <Typography
-          sx={{
-            color: colors.accentRed,
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: "1.5rem",
-          }}
-        >
-          ⚠️ {route.error}
-        </Typography>
-      )}
-
-      {/* Results Card */}
+      {/* Results Section */}
       {route.distance && route.duration && (
-        <Box
+        <Card
           sx={{
-            backgroundColor: "rgba(17, 34, 64, 0.85)",
-            backdropFilter: "blur(6px)",
-            p: 3,
-            borderRadius: 2,
-            boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-            border: `2px solid ${colors.accentGreen}`,
-            maxWidth: 500,
+            maxWidth: 800,
             mx: "auto",
-            textAlign: "center",
+            p: 3,
+            borderRadius: "12px",
+            backgroundColor: colors.cardBackground,
+            backdropFilter: "blur(10px)",
+            border: `1px solid ${colors.cardBorder}`,
           }}
         >
           <Typography
@@ -444,51 +357,38 @@ const TrafficAnalysis = () => {
             sx={{
               color: colors.accentGreen,
               fontWeight: "bold",
-              fontSize: "1.2rem",
+              mb: 2,
             }}
           >
-            Distance:{" "}
-            {route.distance < 1
-              ? `${(route.distance * 1000).toFixed(0)} m`
-              : `${route.distance.toFixed(2)} Km`}
+            Route Details
           </Typography>
-          <Typography
-            variant="h6"
+          <Box
             sx={{
-              color: colors.accentRed,
-              fontWeight: "bold",
-              mt: 1,
-              fontSize: "1.2rem",
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              gap: 2,
             }}
           >
-            Time Required:{" "}
-            {route.duration / 60 < 1
-              ? `${route.duration.toFixed(0)} Minutes`
-              : `${(route.duration / 60).toFixed(2)} Hours`}
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              color: colors.lightText,
-              fontWeight: "bold",
-              mt: 1,
-              fontSize: "1.2rem",
-            }}
-          >
-            Congestion Level: {route.congestion || "Low"}
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              color: colors.lightText,
-              fontWeight: "bold",
-              mt: 1,
-              fontSize: "1.2rem",
-            }}
-          >
-            Vehicle Count: {route.vehicleCount || "Low"}
-          </Typography>
-        </Box>
+            <Typography sx={{ color: colors.text }}>
+              <strong>Distance:</strong>{" "}
+              {route.distance < 1
+                ? `${(route.distance * 1000).toFixed(0)} m`
+                : `${route.distance.toFixed(2)} Km`}
+            </Typography>
+            <Typography sx={{ color: colors.text }}>
+              <strong>Duration:</strong>{" "}
+              {route.duration / 60 < 1
+                ? `${route.duration.toFixed(0)} Minutes`
+                : `${(route.duration / 60).toFixed(2)} Hours`}
+            </Typography>
+            <Typography sx={{ color: colors.text }}>
+              <strong>Congestion:</strong> {route.congestion}
+            </Typography>
+            <Typography sx={{ color: colors.text }}>
+              <strong>Vehicle Count:</strong> {route.vehicleCount}
+            </Typography>
+          </Box>
+        </Card>
       )}
     </div>
   );

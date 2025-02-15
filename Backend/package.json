@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "postinstall": "pip install -r requirements.txt"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
     "deepseek": "^0.0.2",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
+    "nodemon": "^3.1.9",
     "socket.io": "^4.8.1"
   }
 }

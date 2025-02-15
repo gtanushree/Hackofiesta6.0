@@ -1,249 +1,161 @@
-import React, { useEffect } from "react";
-import { Button, Container, Card } from "react-bootstrap";
-import axios from "axios";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars, Sphere, Text } from "@react-three/drei";
+import React, { useEffect, useState } from "react";
+import { Button, Container, Card, Form } from "react-bootstrap";
 import { motion } from "framer-motion";
-import "animate.css/animate.min.css";
-const colors = {
-  darkBlue: "#0a192f",
-  accentGreen: "#64ffda",
-  accentRed: "#f07178",
-  lightText: "#ccd6f6",
-  secondaryBg: "#112240",
-};
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useNavigate } from "react-router-dom";
+import "leaflet/dist/leaflet.css";
 
-function FloatingTrafficElements() {
-  return (
-    <Canvas className="absolute inset-0 z-0">
-      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-      <Stars radius={150} depth={80} count={1000} factor={5} saturation={0} />
-      <ambientLight intensity={1.2} color="cyan" />
-      <pointLight position={[100, 150, 100]} intensity={2.5} color="cyan" />
+function LocationMarker({ searchLocation }) {
+  const [position, setPosition] = useState(null);
+  const map = useMap();
 
-      {/* Animated Traffic Particles */}
-      {[...Array(200)].map((_, i) => (
-        <Sphere
-          key={i}
-          position={[
-            Math.random() * 40 - 20,
-            Math.random() * 10,
-            Math.random() * 40 - 20,
-          ]}
-          args={[0.1, 16, 16]}
-        >
-          <meshStandardMaterial
-            color={Math.random() > 0.5 ? "white" : "cyan"}
-            metalness={0.9}
-            roughness={0.1}
-            emissive={Math.random() > 0.5 ? "white" : "cyan"}
-            emissiveIntensity={2}
-          />
-        </Sphere>
-      ))}
-    </Canvas>
-  );
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (location) => {
+        const { latitude, longitude } = location.coords;
+        setPosition([latitude, longitude]);
+        map.setView([latitude, longitude], 13);
+      },
+      () => {
+        setPosition([17.385044, 78.486671]); // Default location
+        map.setView([17.385044, 78.486671], 13);
+      }
+    );
+  }, [map]);
+
+  useEffect(() => {
+    if (searchLocation) {
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${searchLocation}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.length > 0) {
+            const { lat, lon } = data[0];
+            setPosition([parseFloat(lat), parseFloat(lon)]);
+            map.setView([parseFloat(lat), parseFloat(lon)], 13);
+          }
+        });
+    }
+  }, [searchLocation, map]);
+
+  return position ? (
+    <Marker position={position}>
+      <Popup>Selected Location</Popup>
+    </Marker>
+  ) : null;
 }
 
-function Home() {
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.post(
-        import.meta.env.backendUrl + "/mainpage"
-      );
-      console.log("Server Response:", response.data);
-    } catch (error) {
-      console.error("Error posting data:", error);
+function Home({ theme }) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchLocation, setSearchLocation] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim() !== "") {
+      setSearchLocation(searchQuery);
     }
   };
 
+  const handleGetStarted = () => {
+    navigate("/dashboard");
+  };
+
+  const colors = {
+    dark: {
+      background: "#16213e",
+      accentGreen: "#64ffda",
+      accentRed: "#f07178",
+      text: "#ccd6f6",
+      cardBackground: "rgba(255, 255, 255, 0.1)",
+      cardBorder: "rgba(100, 255, 218, 0.5)",
+      placeholderText: "#ffffff",
+      buttonText: "#000000"
+    },
+    light: {
+      background: "#f8f9fa",
+      accentGreen: "#00796b",
+      accentRed: "#d32f2f",
+      text: "#212121",
+      cardBackground: "#ffffff",
+      cardBorder: "rgba(0, 121, 107, 0.5)",
+      placeholderText: "#6c757d",
+      buttonText: "#ffffff"
+    },
+  };
+  const features = [
+    {
+      title: "Real-Time Traffic",
+      description: "Get up-to-the-minute traffic updates to navigate congestion and avoid delays.",
+    },
+    {
+      title: "Smart Routing",
+      description: "AI-powered route optimization ensures the fastest and most efficient travel paths.",
+    },
+    {
+      title: "Parking Assistance",
+      description: "Locate nearby parking spaces in real-time, reducing the hassle of searching.",
+    },
+    {
+      title: "Public Transit",
+      description: "Access schedules and optimize your journey with real-time public transport insights.",
+    },
+  ];
+
+  const themeColors = theme === "dark" ? colors.dark : colors.light;
+
   return (
-    <div style={{ backgroundColor: "#0a192f" }}>
-      <div
-        style={{
-          position: "absolute",
-          zIndex: "0",
-          height: "100%",
-          width: "100%",
-        }}
-      >
-        <FloatingTrafficElements />
-      </div>
-      <Container
-        className="flex justify-center items-center h-screen relative overflow-hidden w-screen z-10"
-        style={{ backgroundColor: colors.darkBlue }}
-      >
-        <div
-          className="w-full w-screen space-y-8 relative z-1"
-          style={{ marginTop: "10vh" }}
-        >
-          {/* Main Holographic Interface */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, type: "spring" }}
-            className="perspective-2000"
-          >
-            <Card
-              className="bg-[rgba(17,34,64,0.6)] backdrop-blur-xl border-2 border-[rgba(204,214,246,0.3)] rounded-3xl p-8 
-          shadow-[0_0_80px_rgba(100,255,218,0.3)] hover:shadow-[0_0_120px_rgba(100,255,218,0.5)]
-          transform-style-preserve-3d group relative overflow-hidden"
-              style={{ backgroundColor: "rgba(11, 13, 32, 0.93)", blur: "100px" }}
-            >
-              {/* Animated Grid Background */}
-              <Card.Body className="relative">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="text-center mb-8"
-                >
-                  <h1
-                    className="text-7xl font-black mb-4 text-white bg-clip-text 
-                bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] animate-text-glow"
-                  >
-                    SMART TRAFFIC AI
-                  </h1>
-                  <div
-                    className="h-1 bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] w-1/3 mx-auto 
-                animate__animated animate__fadeInLeft"
-                  />
-                </motion.div>
+    <div style={{ backgroundColor: themeColors.background, minHeight: "100vh", padding: "2rem 0" }}>
+      <Container>
+        <motion.div className="text-center mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <h1 style={{ color: themeColors.accentGreen }}>Smart Traffic Management System</h1>
+          <p style={{ color: themeColors.text }}>Optimize urban mobility with real-time traffic insights and AI-powered routing</p>
+        </motion.div>
 
-                {/* Interactive Feature Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* Features Panel */}
-                  <motion.div
-                    whileHover={{ rotateY: 5 }}
-                    className="bg-[rgba(17,34,64,0.4)] p-8 rounded-2xl border-2 border-[rgba(100,255,218,0.2)] 
-                  hover:border-[rgba(100,255,218,0.5)] transition-all relative"
-                  >
-                    <div
-                      className="absolute inset-0 bg-gradient-to-r from-[rgba(100,255,218,0.1)] to-transparent 
-                  opacity-30 animate-pulse"
-                    />
-                    <h2
-                      className="text-3xl font-bold mb-6"
-                      style={{ color: colors.accentGreen }}
-                    >
-                      Features
-                    </h2>
-                    <ul className="space-y-4">
-                      {[
-                        "🚗 Smart Parking",
-                        "🚥 Live Traffic",
-                        "🟢 Adaptive Lights",
-                        "🤖 AI Routing",
-                      ].map((item, i) => (
-                        <motion.li
-                          key={i}
-                          whileHover={{ x: 15 }}
-                          className="flex items-center space-x-4 text-lg p-4 
-                        bg-[rgba(17,34,64,0.3)] rounded-xl hover:bg-[rgba(100,255,218,0.1)] border border-[rgba(100,255,218,0.1)]
-                        transition-all text-white"
-                        >
-                          <span className="text-3xl animate-bounce text-white">
-                            {item.split(" ")[0]}
-                          </span>
-                          <span className="text-xl text-white">
-                            {item.split(" ").slice(1).join(" ")}
-                          </span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-
-                  {/* Use Cases Panel */}
-                  <motion.div
-                    whileHover={{ rotateY: -5 }}
-                    className="bg-[rgba(17,34,64,0.4)] p-8 rounded-2xl border-2 border-[rgba(240,113,120,0.2)] 
-                  hover:border-[rgba(240,113,120,0.5)] transition-all relative text-white"
-                  >
-                    <div
-                      className="absolute inset-0 bg-gradient-to-l from-[rgba(240,113,120,0.1)] to-transparent 
-                  opacity-30 animate-pulse"
-                    />
-                    <h2
-                      className="text-3xl font-bold mb-6 "
-                      style={{ color: colors.accentRed }}
-                    >
-                      Use Cases
-                    </h2>
-                    <ul className="space-y-4 text-white">
-                      {[
-                        "City Control",
-                        "Emergency Routes",
-                        "Public Transport",
-                        "Smart Parking",
-                      ].map((item, i) => (
-                        <motion.li
-                          key={i}
-                          whileHover={{ scale: 1.02 }}
-                          className="p-4 bg-[rgba(17,34,64,0.3)] rounded-xl hover:bg-[rgba(240,113,120,0.1)] 
-                        border border-[rgba(240,113,120,0.1)] transition-all text-white"
-                        >
-                          <div className="flex items-center space-x-4 text-white">
-                            <div
-                              className="w-12 h-12 flex items-center justify-center 
-                          bg-gradient-to-r from-[rgb(240,113,120)] to-[rgb(100,255,218)] rounded-full text-xl
-                          text-white
-                          animate-pulse"
-                            >
-                              {i + 1}
-                            </div>
-                            <span className="text-xl text-white">{item}</span>
-                          </div>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                </div>
-
-                {/* Cyberpunk-style Launch Button */}
-                <motion.div
-                  whileHover={{ scale: 1.1, translateX: "5vw" }}
-                  whileTap={{ scale: 0.9 }}
-                  className="mt-12 flex justify-center"
-                >
-                  <Button
-                    className="py-5 px-20 bg-gradient-to-r from-[#64ffda] to-[#f07178] backdrop-blur-md
-      rounded-full text-2xl font-bold shadow-[0_4px_12px_rgba(100,255,218,0.5)]
-      hover:shadow-[0_8px_20px_rgba(100,255,218,0.8)] transition-all duration-300
-      border-2 border-[#ccd6f6]/40 relative overflow-hidden group"
-                    onClick={handleSubmit}
-                  >
-                    {/* Button Text */}
-                    <span className="relative z-10 animate-text-glow">
-                      🚀 LAUNCH SYSTEM
-                    </span>
-
-                    {/* Background Glow Effect */}
-                    <div className="absolute inset-0 bg-white/20 backdrop-blur-sm animate-pulse" />
-
-                    {/* Border Glow Effect */}
-                    <div className="absolute inset-0 border-2 border-white/20 rounded-full animate-border-glow" />
-                  </Button>
-                </motion.div>
-              </Card.Body>
-            </Card>
-          </motion.div>
-
-          {/* Holographic Road Visualization */}
-          <div className="h-32 relative overflow-hidden rounded-2xl bg-[rgba(17,34,64,0.4)] backdrop-blur-lg border-2 border-[rgba(100,255,218,0.2)]">
-            <div className="absolute inset-0 flex items-center animate-holo-road">
-              {[...Array(20)].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-2 w-32 bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] mx-8 
-                  rounded-full transform -skew-x-12 shadow-xl"
-                />
-              ))}
-            </div>
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 animate-holo-car">
-              <div
-                className="w-full h-full bg-gradient-to-r from-[rgb(100,255,218)] to-[rgb(240,113,120)] 
-                  rounded-lg transform -skew-x-12 shadow-2xl blur-[1px]"
-              />
-            </div>
+        <Form className="mb-4 mx-auto" style={{ maxWidth: "600px" }}>
+          <div className="input-group">
+            <Form.Control
+              type="search"
+              placeholder="Search location..."
+              className="form-control-lg"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{ backgroundColor: themeColors.cardBackground, borderColor: themeColors.accentGreen, color: themeColors.text }}
+            />
+            <style>
+              {`
+                ::placeholder {
+                  color: ${themeColors.placeholderText} !important;
+                  opacity: 1;
+                }
+              `}
+            </style>
+            <Button style={{ backgroundColor: themeColors.accentGreen, borderColor: themeColors.accentGreen, color: themeColors.buttonText }} onClick={handleSearch}>Search</Button>
           </div>
+        </Form>
+
+        <Card className="mb-4 border-0" style={{ backgroundColor: themeColors.cardBackground, borderRadius: "12px" }}>
+          <Card.Body className="p-3">
+            <MapContainer center={[17.385044, 78.486671]} zoom={13} style={{ height: "400px", borderRadius: "12px" }}>
+              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              <LocationMarker searchLocation={searchLocation} />
+            </MapContainer>
+          </Card.Body>
+        </Card>
+
+        <div className="row g-4 mb-4">
+          {["Real-Time Traffic", "Smart Routing", "Parking Assistance", "Public Transit"].map((title, i) => (
+            <div key={i} className="col-md-6 col-lg-3">
+              <motion.div whileHover={{ y: -5 }} className="p-4 rounded-lg text-center" style={{ backgroundColor: themeColors.cardBackground, borderRadius: "12px" }}>
+                <h5 style={{ color: themeColors.accentGreen }}>{title}</h5>
+                <p style={{ color: themeColors.text }}>{features[i].description}</p>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button size="lg" style={{ backgroundColor: themeColors.accentGreen, borderColor: themeColors.accentGreen, color: themeColors.buttonText }} onClick={handleGetStarted}>Get Started</Button>
+          </motion.div>
         </div>
       </Container>
     </div>

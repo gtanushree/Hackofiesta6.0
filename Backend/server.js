@@ -6,6 +6,8 @@ const routingRoutes = require('./routes/routing');
 const Ai = require('./routes/ai');
 const { logRequest, logError } = require('./utils/logger'); // Custom logger utility
 const rateLimit = require('express-rate-limit'); // Rate limiting for API protection
+const parkingRoutes = require('./routes/parking');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,6 +29,7 @@ app.use(limiter); // Apply rate limiting to all routes
 app.use('/traffic', trafficRoutes); // Traffic-related routes
 app.use('/routing', routingRoutes); // Routing-related routes
 app.use('/ai' , Ai); // AI-related routes
+app.use('/parking', parkingRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

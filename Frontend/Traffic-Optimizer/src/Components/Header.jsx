@@ -10,15 +10,39 @@ import {
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-function Header() {
+const themeColors = {
+  dark: {
+    background: "#112240",
+    accentGreen: "#64ffda",
+    accentRed: "#f07178",
+    text: "#ccd6f6",
+    cardBackground: "rgba(255, 255, 255, 0.1)",
+    cardBorder: "rgba(100, 255, 218, 0.5)",
+    placeholder: "#ffffff !important",
+  },
+  light: {
+    background: "#ffffff",
+    accentGreen: "#00bcd4",
+    accentRed: "#ff5252",
+    text: "#333333",
+    cardBackground: "rgba(0, 0, 0, 0.1)",
+    cardBorder: "rgba(0, 188, 212, 0.5)",
+    placeholder: "#757575 !important",
+  },
+};
+
+function Header({ theme, toggleTheme }) {
+  const colors = themeColors[theme];
+
   return (
     <div
-      className="w-full mx-auto relative z-50"
-      style={{ backgroundColor: "#0a192f" }}
+      className="w-full mx-auto relative"
+      style={{ backgroundColor: colors.background, zIndex: 1000 }}
     >
       <Navbar
         expand="lg"
-        className="backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_rgba(255,255,255,0.3)] rounded-3xl hover:shadow-[0_15px_45px_rgba(255,255,255,0.5)] transition-all duration-300"
+        className="backdrop-blur-3xl border shadow-lg rounded-3xl transition-all duration-300"
+        style={{ borderColor: colors.cardBorder }}
       >
         <Container fluid>
           <motion.div
@@ -28,119 +52,115 @@ function Header() {
             <Navbar.Brand
               as={Link}
               to="/"
-              className="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-pink-300 bg-clip-text text-white animate-text-shine"
+              className="text-2xl font-bold bg-clip-text"
+              style={{ color: colors.accentGreen }}
             >
-              Traffic-Optimizer AI
+              Traveasy
             </Navbar.Brand>
           </motion.div>
 
           <Navbar.Toggle
             aria-controls="navbarScroll"
-            className="border-white"
-            style={{ filter: "invert(1)" }}
+            style={{ filter: theme === "dark" ? "invert(1)" : "invert(0)" }}
           />
 
-          <Navbar.Collapse
-            id="navbarScroll"
-            className="py-4 lg:py-0 text-white "
-          >
-            <Nav className="me-auto my-2 my-lg-0 gap-3 text-white" navbarScroll>
-              <motion.div whileHover={{ scale: 1.05 }}>
-                <Nav.Link
-                  as={Link}
-                  to="/"
-                  className="text-white hover:text-white px-4 py-2 rounded-xl hover:bg-white/5 transition-all"
-                >
-                  Home
-                </Nav.Link>
-              </motion.div>
+          <Navbar.Collapse id="navbarScroll" className="py-4 lg:py-0">
+            <Nav className="me-auto my-2 my-lg-0 gap-3" navbarScroll>
+              {[{ path: "/", label: "Home" }, { path: "/dashboard", label: "Dashboard" }].map(
+                (item) => (
+                  <motion.div key={item.path} whileHover={{ scale: 1.05 }}>
+                    <Nav.Link
+                      as={Link}
+                      to={item.path}
+                      style={{ color: colors.text }}
+                      className="px-4 py-2 rounded-xl transition-all"
+                    >
+                      {item.label}
+                    </Nav.Link>
+                  </motion.div>
+                )
+              )}
 
-              <motion.div whileHover={{ scale: 1.05 }}>
-                <Nav.Link
-                  as={Link}
-                  to="/dashboard"
-                  className="text-white hover:text-white px-4 py-2 rounded-xl hover:bg-white/5 transition-all"
-                >
-                  Dashboard
-                </Nav.Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{}}
-                style={{ backgroundColor: "#0a192f" }}
-              >
+              <motion.div whileHover={{ scale: 1.05 }} style={{ position: "relative", zIndex: 1001 }}>
                 <NavDropdown
-                  title={
-                    <span className="text-white font-medium transition-all">
-                      Solutions
-                    </span>
-                  }
-                  className="rounded-xl px-4 py-2 text-white"
+                  title={<span style={{ color: colors.text }}>Solutions</span>}
                   id="navbarScrollingDropdown"
+                  style={{ zIndex: 1001 }}
                 >
-                  <div className="bg-slate-900/95 backdrop-blur-3xl border border-white/20 rounded-xl p-2 shadow-xl">
-                    <NavDropdown.Item
-                      as={Link}
-                      to="/traffic-analysis"
-                      className="text-black rounded-lg p-3 transition-all group"
-                    >
-                      <span className="group-hover:translate-x-2 transition-transform">
-                        🚦 Traffic Analysis
-                      </span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      as={Link}
-                      to="/ai-predictions"
-                      className="text-black  hover:text-pink-300 rounded-lg p-3 transition-all group"
-                    >
-                      <span className="group-hover:translate-x-2 transition-transform">
-                        🤖 AI Predictions
-                      </span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      as={Link}
-                      to="/carpooling"
-                      className="text-blacck hover:text-pink-300 rounded-lg p-3 transition-all group"
-                    >
-                      <span className="group-hover:translate-x-2 transition-transform">
-                        🗺️ Car Pooling
-                      </span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      as={Link}
-                      to="/navigate-me"
-                      className="text-black  hover:text-cyan-300 rounded-lg p-3 transition-all group"
-                    >
-                      <span className="group-hover:translate-x-2 transition-transform">
-                        🧭 Navigate Me
-                      </span>
-                    </NavDropdown.Item>
+                  <div
+                    style={{
+                      backgroundColor: colors.cardBackground,
+                      borderColor: colors.cardBorder,
+                      zIndex: 1001,
+                    }}
+                    className="backdrop-blur-3xl border rounded-xl p-2 shadow-xl"
+                  >
+                    {[
+                      { path: "/traffic-analysis", label: "🚦 Traffic Analysis" },
+                      { path: "/ai-predictions", label: "🤖 AI Predictions" },
+                      { path: "/carpooling", label: "🗺️ Car Pooling" },
+                      { path: "/navigate-me", label: "🧑‍🧭 Navigate Me" },
+                    ].map((item) => (
+                      <NavDropdown.Item
+                        key={item.path}
+                        as={Link}
+                        to={item.path}
+                        style={{ color: colors.text }}
+                        className="rounded-lg p-3 transition-all group"
+                      >
+                        <span className="group-hover:translate-x-2 transition-transform">
+                          {item.label}
+                        </span>
+                      </NavDropdown.Item>
+                    ))}
                   </div>
                 </NavDropdown>
               </motion.div>
             </Nav>
 
             <Form className="d-flex gap-3">
-              <motion.div whileHover={{ scale: 1.05 }} className="flex-1">
-                <Form.Control
-                  type="search"
-                  placeholder="Search city..."
-                  className="me-2 bg-white/10 border-white/20 text-black placeholder-white/50 focus:ring-2 focus:ring-cyan-300 focus:border-transparent"
-                />
-              </motion.div>
+              <Form.Control
+                type="search"
+                placeholder="Search city..."
+                style={{
+                  backgroundColor: colors.cardBackground,
+                  borderColor: colors.cardBorder,
+                  color: colors.text,
+                  "::placeholder": { color: colors.placeholder },
+                }}
+                className="me-2 focus:ring-2 focus:ring-cyan-300 focus:border-transparent placeholder-white !important"
+              />
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   variant="outline-light"
-                  className=" border-none text-black px-6 py-2 rounded-xl transition-all bg-white"
+                  style={{
+                    backgroundColor: colors.accentGreen,
+                    color: colors.background,
+                  }}
+                  className="px-6 py-2 rounded-xl transition-all"
                 >
                   Search
                 </Button>
               </motion.div>
             </Form>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="ml-3"
+            >
+              <Button
+                onClick={toggleTheme}
+                style={{
+                  backgroundColor: colors.accentRed,
+                  color: colors.background,
+                }}
+                className="px-6 py-2 rounded-xl transition-all"
+              >
+                {theme === "dark" ? "🌙" : "☀️"}
+              </Button>
+            </motion.div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

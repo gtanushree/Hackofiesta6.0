@@ -1,7 +1,7 @@
 # Hackofiesta6.0
-## * Traffic optimizer
+## * Traveasy
 
-Traffic optimizer is a next-generation traffic management and routing prototype that leverages real-time GPS data, historical traffic information, and predictive analytics to deliver dynamic routing, congestion heatmaps, and alternate route suggestions. Built during Hacko Fiesta, this project demonstrates a modern, responsive user interface.....
+Traveasy is a next-generation traffic management and routing prototype that leverages real-time GPS data, historical traffic information, and predictive analytics to deliver dynamic routing, congestion heatmaps, and alternate route suggestions. Built during Hacko Fiesta, this project demonstrates a modern, responsive user interface.....
 
 ## Table of Contents
 
