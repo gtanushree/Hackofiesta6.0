@@ -27,9 +27,10 @@ const themeColors = {
     background: "#0a192f",
     accentGreen: "#64ffda",
     accentRed: "#f07178",
-    text: "#ccd6f6",
+    text: "#fff",
     cardBackground: "rgba(255, 255, 255, 0.1)",
     cardBorder: "rgba(100, 255, 218, 0.5)",
+    heading: "#64ffda",
   },
   light: {
     background: "#ffffff",
@@ -38,6 +39,7 @@ const themeColors = {
     text: "#333333",
     cardBackground: "rgba(0, 0, 0, 0.1)",
     cardBorder: "rgba(0, 188, 212, 0.5)",
+    heading: "#00bcd4",
   },
 };
 
@@ -370,22 +372,22 @@ const TrafficAnalysis = ({ theme }) => {
             }}
           >
             <Typography sx={{ color: colors.text }}>
-              <strong>Distance:</strong>{" "}
+              <strong style={{color:colors.heading}}>Distance:</strong>{" "}
               {route.distance < 1
                 ? `${(route.distance * 1000).toFixed(0)} m`
                 : `${route.distance.toFixed(2)} Km`}
             </Typography>
             <Typography sx={{ color: colors.text }}>
-              <strong>Duration:</strong>{" "}
+              <strong style={{color:colors.heading}}>Duration:</strong>{" "}
               {route.duration / 60 < 1
                 ? `${route.duration.toFixed(0)} Minutes`
                 : `${(route.duration / 60).toFixed(2)} Hours`}
             </Typography>
             <Typography sx={{ color: colors.text }}>
-              <strong>Congestion:</strong> {route.congestion}
+              <strong style={{color:colors.heading}}>Congestion:</strong> {route.congestion}
             </Typography>
             <Typography sx={{ color: colors.text }}>
-              <strong>Vehicle Count:</strong> {route.vehicleCount}
+              <strong style={{color:colors.heading}}>Vehicle Count:</strong> {route.vehicleCount}
             </Typography>
           </Box>
         </Card>

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import Dashboard from './Components/Dashboard';
-import TrafficAnalysis from './Components/TrafficAnalysis';
+import TrafficAnalysis from './Components/checkRoute';
 import CarPooling from './Components/CarPooling';
 import AiPredictions from './Components/AiPredictions';
 import NavigateMe from './Components/NavigateMe';
@@ -32,7 +32,7 @@ function App() {
           path="/dashboard"
           element={<Dashboard key={theme} theme={theme} />}
         />
-        <Route path="/traffic-analysis" element={<TrafficAnalysis theme={theme} />} />
+        <Route path="/check-route" element={<TrafficAnalysis theme={theme} />} />
         <Route path="/carpooling" element={<CarPooling theme={theme} />} />
         <Route path="/ai-predictions" element={<AiPredictions theme={theme} />} />
         <Route path="*" element={<NotFound theme={theme} />} />

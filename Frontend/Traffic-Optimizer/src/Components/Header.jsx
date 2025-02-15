@@ -96,7 +96,7 @@ function Header({ theme, toggleTheme }) {
                     className="backdrop-blur-3xl border rounded-xl p-2 shadow-xl"
                   >
                     {[
-                      { path: "/traffic-analysis", label: "🚦 Traffic Analysis" },
+                      { path: "/check-route", label: "Check Route" },
                       { path: "/ai-predictions", label: "🤖 AI Predictions" },
                       { path: "/carpooling", label: "🗺️ Car Pooling" },
                       { path: "/navigate-me", label: "🧑‍🧭 Navigate Me" },
