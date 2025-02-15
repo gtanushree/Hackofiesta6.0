@@ -52,7 +52,7 @@ function Header({ theme, toggleTheme }) {
             <Navbar.Brand
               as={Link}
               to="/"
-              className="text-2xl font-bold bg-clip-text"
+              className="text-3xl font-bold bg-clip-text"
               style={{ color: colors.accentGreen }}
             >
               Traveasy

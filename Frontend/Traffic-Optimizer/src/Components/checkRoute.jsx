@@ -45,7 +45,7 @@ const themeColors = {
 
 // Custom Icon for Markers
 const customIcon = L.icon({
-  iconUrl: Icon,
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
   iconSize: [32, 52],
   iconAnchor: [16, 52],
   popupAnchor: [1, -34],
